@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Copy over the base database to our data directory if it doesn't exist
+if [[ ! -f /data/database/murmur.sqlite ]]; then
+    
+    mkdir -p /data/database/
+
+    if [[ -f /var/lib/murmur/murmur.sqlite ]]; then
+        echo "existing database found."
+        echo "copying to /data/database/murmur.sqlite..."
+        cp /var/lib/murmur/murmur.sqlite /data/database/murmur.sqlite
+    else
+        echo "existing database not found."
+        echo "creating /data/database/murmur.sqlite..."
+        touch /data/database/murmur.sqlite
+    fi
+    
+    chmod -R 600 /data/database/*
+    chown -R murmur:murmur /data/database/
+fi
+
+# Set SuperUser's password
+if [[ ! -f /data/supwd ]]; then
+
+    # Generate a password for SuperUser
+    SUPERUSER_PASSWORD=`pwgen -c -n -1 15`
+    echo $SUPERUSER_PASSWORD > /data/supwd
+    chmod 400 /data/supwd
+    
+    # Sets SuperUser's password
+    /usr/bin/murmurd -supw $SUPERUSER_PASSWORD
+
+    # Output to console for builder
+    sleep 3
+    echo
+    echo "[ ! ] SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
+    echo
+fi
+
+# Self-remove
+echo "Removing setup script..."
+rm -- "$0"
