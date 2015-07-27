@@ -50,8 +50,12 @@ The image built here is based off of @gliderlab's [docker-alpine][gliderlabs/doc
 
 All that said, if `apk` hangs on one of the mirrors, don't fret. It'll pull through. During development, 3 and 4 hung endlessly so I just removed them. You'll notice that they are in the repo now; just remove mirrors if you notice them constantly failing and the delay annoys you.
 
+## License
+Licensed under MIT. [View License][license]
+
 [wikipedia-mumble]: https://en.wikipedia.org/wiki/Mumble_(software) "Mumble on Wikipedia"
 [docker]: https://www.docker.com/ "Docker"
 [gliderlabs]: https://github.com/gliderlabs "Glider Labs"
 [gliderlabs/docker-alpine]: https://github.com/gliderlabs/docker-alpine "gliderlabs/docker-alpine"
 [alpine-linux]: http://alpinelinux.org/ "Alpine Linux"
+[license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
