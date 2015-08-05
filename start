@@ -28,15 +28,16 @@ if [[ ! -f /data/supwd ]]; then
     chmod 400 /data/supwd
     
     # Sets SuperUser's password
-    /usr/bin/murmurd -supw $SUPERUSER_PASSWORD
+    /usr/bin/murmurd -ini /etc/murmur.ini -supw $SUPERUSER_PASSWORD
+    sleep 3
 
     # Output to console for builder
-    sleep 3
+    echo "============================================="
     echo
     echo "[ ! ] SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
     echo
+    echo "============================================="
 fi
 
-# Self-remove
-echo "Removing setup script..."
-rm -- "$0"
+# Start murmurd in foreground
+/usr/bin/murmurd -fg
