@@ -14,7 +14,7 @@ ADD ./murmur/murmur.ini /etc/murmur.ini
 # Notes:
 # 1. SuperUser's password is output to the console in this step
 # 2. The script deletes itself on completion
-ADD ./start /start
+ADD ./script/start /start
 RUN chmod 700 /start
 
 # Expose the port
