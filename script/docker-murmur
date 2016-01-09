@@ -39,5 +39,5 @@ if [[ ! -f /data/supwd ]]; then
     echo "============================================="
 fi
 
-# Start murmurd in foreground
-/usr/bin/murmurd -fg
+# Start murmurd
+/usr/bin/murmurd
