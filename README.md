@@ -12,7 +12,21 @@ instances on the same host.
 
 This guide assumes that you already have [Docker][2] installed.
 
-### Clone this repository
+### **Option 1**: Pull the official image
+
+It's easiest to get going if you pull the image from the [official hub repo][4].
+
+```bash
+docker pull bddenhartog/docker-murmur
+```
+
+Next, you should [create a container](#Create-a-container).
+
+### **Option 2**: Install from source
+
+You can also build the image locally.
+
+#### Clone this repository
 
 You'll probably want to clone this repository (or download it some other way).
 This will create the `docker-murmur` folder in your current directory, and clone
@@ -22,10 +36,10 @@ the repository within that:
 git clone https://github.com/bddenhartog/docker-murmur.git
 ```
 
-### Build the image locally
+#### Build the image locally
 
 Next, you'll need to build the base image locally as it is not maintained on
-DockerHub (because the `data` directory is shared from all containers spawned
+Docker Hub (because the `data` directory is shared from all containers spawned
 from the base image, it wouldn't make sense to share that base image -- in other
 words, I wouldn't recommend putting your image on DockerHub).
 
@@ -37,12 +51,14 @@ cd docker-murmur
 docker build -t docker-murmur .
 ```
 
+Next, you should [create a container](#Create-a-container).
+
 ### Create a container
 
 Now that you have a "base image", let's get a container up and running.
 
 ```bash
-docker run -d -p <HOST-PORT>:64738 --name <YOUR-CONTAINER-NAME> docker-murmur
+docker run -d -p <HOST-PORT>:64738 --name <CONTAINER-NAME> <IMAGE-NAME>
 ```
 
 **< HOST-PORT >**  
@@ -50,6 +66,12 @@ should be replaced with an available port on the host machine.
 
 **< CONTAINER-NAME >**  
 should be replaced (e.g. `murmur-001`, `murmur-002`, `murmur-003` etc).
+
+**< IMAGE-NAME >**  
+should be replaced with the correct image name, like:
+
+-   `bddenhartog/docker-murmur` (if you pulled the official image)
+-   `docker-murmur` (if you built the image locally)
 
 #### Logging in as SuperUser
 
@@ -85,3 +107,4 @@ Licensed under MIT. [View License][3].
 [1]: https://en.wikipedia.org/wiki/Mumble_(software) "Wikipedia - Mumble (software)"
 [2]: https://www.docker.com/ "Docker"
 [3]: LICENSE.md "View License"
+[4]: https://hub.docker.com/r/bddenhartog/docker-murmur/ "bddenhartog/docker-murmur"
