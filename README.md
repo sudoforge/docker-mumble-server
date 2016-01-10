@@ -73,7 +73,7 @@ should be replaced with the correct image name, like:
 -   `bddenhartog/docker-murmur` (if you pulled the official image)
 -   `docker-murmur` (if you built the image locally)
 
-#### Logging in as SuperUser
+### Logging in as SuperUser
 
 Each new container will have a unique password for `SuperUser`, the
 administrative user for your Murmur server. To get this password, simply view
