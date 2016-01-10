@@ -61,17 +61,11 @@ Now that you have a "base image", let's get a container up and running.
 docker run -d -p <HOST-PORT>:64738 --name <CONTAINER-NAME> <IMAGE-NAME>
 ```
 
-**< HOST-PORT >**  
-should be replaced with an available port on the host machine.
-
-**< CONTAINER-NAME >**  
-should be replaced (e.g. `murmur-001`, `murmur-002`, `murmur-003` etc).
-
-**< IMAGE-NAME >**  
-should be replaced with the correct image name, like:
-
--   `bddenhartog/docker-murmur` (if you pulled the official image)
--   `docker-murmur` (if you built the image locally)
+| Original       | Replace with                           |
+| -------------- | -------------------------------------- |
+| HOST-POST      | An available port on the host machine  |
+| CONTAINER-NAME | Desired name for the container         |
+| IMAGE-NAME     | The base image's name                  |
 
 ### Logging in as SuperUser
 
