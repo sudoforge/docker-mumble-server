@@ -51,6 +51,24 @@ should be replaced with an available port on the host machine.
 **< CONTAINER-NAME >**  
 should be replaced (e.g. `murmur-001`, `murmur-002`, `murmur-003` etc).
 
+#### Logging in as SuperUser
+
+Each new container will have a unique password for `SuperUser`, the
+administrative user for your Murmur server. To get this password, simply view
+the container logs. It is recommended that you save SuperUser's password
+somewhere safe for each container.
+
+```shell
+$ docker logs <CONTAINER-NAME>
+
+...
+=============================================
+
+[ ! ] SUPERUSER_PASSWORD: <generated-pw>
+
+=============================================
+```
+
 ## Updating
 
 To update, you should perform the following steps _in order_:
