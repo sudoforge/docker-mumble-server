@@ -2,7 +2,7 @@
 
 # Copy over the base database to our data directory if it doesn't exist
 if [[ ! -f /data/database/murmur.sqlite ]]; then
-    
+
     mkdir -p /data/database/
 
     if [[ -f /var/lib/murmur/murmur.sqlite ]]; then
@@ -14,7 +14,7 @@ if [[ ! -f /data/database/murmur.sqlite ]]; then
         echo "creating /data/database/murmur.sqlite..."
         touch /data/database/murmur.sqlite
     fi
-    
+
     chmod -R 600 /data/database/*
     chown -R murmur:murmur /data/database/
 fi
@@ -26,7 +26,7 @@ if [[ ! -f /data/supwd ]]; then
     SUPERUSER_PASSWORD=`pwgen -c -n -1 15`
     echo $SUPERUSER_PASSWORD > /data/supwd
     chmod 400 /data/supwd
-    
+
     # Sets SuperUser's password
     /usr/bin/murmurd -ini /etc/murmur.ini -supw $SUPERUSER_PASSWORD
     sleep 3
@@ -39,5 +39,5 @@ if [[ ! -f /data/supwd ]]; then
     echo "============================================="
 fi
 
-# Start murmurd in foreground
-/usr/bin/murmurd -fg
+# Start murmurd
+/usr/bin/murmurd
