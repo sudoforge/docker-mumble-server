@@ -20,7 +20,7 @@ It's easiest to get going if you pull the image from the [official hub repo][4].
 docker pull bddenhartog/docker-murmur
 ```
 
-Next, you should [create a container](#Create-a-container).
+Next, you should [create a container](#create-a-container).
 
 ### **Option 2**: Install from source
 
@@ -51,7 +51,7 @@ cd docker-murmur
 docker build -t docker-murmur .
 ```
 
-Next, you should [create a container](#Create-a-container).
+Next, you should [create a container](#create-a-container).
 
 ### Create a container
 
