@@ -8,6 +8,7 @@ COPY ./script/docker-murmur /usr/bin/docker-murmur
 RUN apk --no-cache add \
         murmur \
         pwgen \
+        icu-libs \
     && chmod 700 /usr/bin/docker-murmur
 
 # Exposed port should always match what is set in /murmur/murmur.ini
