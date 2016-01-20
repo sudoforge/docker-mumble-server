@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    - docker build -t docker-murmur .
+    - docker run -d -p 64738:64738 docker-murmur
+
+script:
+  - docker ps | grep docker-murmur
