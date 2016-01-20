@@ -11,6 +11,12 @@ clients to connect to. [Learn More][1].
 `docker-murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
+```bash
+$ docker images 
+REPOSITORY                     TAG         VIRTUAL SIZE
+bddenhartog/docker-murmur      latest      57.79 MB
+```
+
 ## Getting started
 
 This guide assumes that you already have [Docker][2] installed.
