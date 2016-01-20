@@ -12,7 +12,7 @@ clients to connect to. [Learn More][1].
 instances on the same host.
 
 ```bash
-$ docker images 
+$ docker images
 REPOSITORY                     TAG         VIRTUAL SIZE
 bddenhartog/docker-murmur      latest      57.79 MB
 ```
