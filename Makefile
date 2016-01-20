@@ -5,10 +5,10 @@ rebuild:
 	make remove; make build; make run
 
 run:
-	docker run -d -p 1337:64738/udp -p 1337:64738/tcp --name murmur-001 docker-murmur
+	docker run -d -p 64738:64738/udp -p 64738:64738/tcp --name murmur-001 docker-murmur
 
 debug:
-	docker run -it -p 1337:64738/udp -p 1337:64738/tcp --entrypoint=sh docker-murmur
+	docker run --rm -it -p 64738:64738/udp -p 64738:64738/tcp --entrypoint=sh docker-murmur
 
 remove:
 	make stop-containers; make remove-containers; make remove-image
