@@ -5,10 +5,9 @@ COPY ./apk/repositories /etc/apk/repositories
 COPY ./murmur/murmur.ini /etc/murmur.ini
 COPY ./script/docker-murmur /usr/bin/docker-murmur
 
-RUN apk --update --no-cache add \
+RUN apk --no-cache add \
         murmur \
         pwgen \
-    && rm -rf /var/cache/apk/* \
     && chmod 700 /usr/bin/docker-murmur
 
 # Exposed port should always match what is set in /murmur/murmur.ini
