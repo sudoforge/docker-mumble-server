@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg?style=flat)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
+
 # docker-murmur
 
 **Mumble** is a VOIP application which allows users to talk to each other via
