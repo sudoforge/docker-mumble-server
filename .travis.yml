@@ -6,4 +6,6 @@ services:
 before_install:
     - docker build -t docker-murmur .
     - docker run -d -p 64738:64738 docker-murmur
-    - docker ps -a
+
+script:
+  - docker ps | grep -q docker-murmur
