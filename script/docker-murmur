@@ -1,38 +1,26 @@
 #!/bin/sh
 
-if [[ ! -f /data/database/murmur.sqlite ]]; then
-
-    mkdir -p /data/database/
-
-    if [[ -f /var/lib/murmur/murmur.sqlite ]]; then
-        echo "existing database found."
-        echo "copying to /data/database/murmur.sqlite..."
-        cp /var/lib/murmur/murmur.sqlite /data/database/murmur.sqlite
-    else
-        echo "existing database not found."
-        echo "creating /data/database/murmur.sqlite..."
-        touch /data/database/murmur.sqlite
-    fi
-
-    chmod -R 600 /data/database/*
-    chown -R murmur:murmur /data/database/
+if [[ ${SERVER_PASSWORD+x} ]]; then
+    sed -i -e "s/serverpassword=/serverpassword=$SERVER_PASSWORD/" /etc/murmur/murmur.ini
 fi
 
-if [[ ! -f /data/supwd ]]; then
+if [[ ! -f /opt/murmur/supwd ]]; then
 
+    STORAGE_LOCATION='/opt/murmur/supwd'
     SUPERUSER_PASSWORD=`pwgen -c -n -1 15`
-    echo $SUPERUSER_PASSWORD > /data/supwd
-    chmod 400 /data/supwd
+    echo $SUPERUSER_PASSWORD > $STORAGE_LOCATION
+    chmod 400 $STORAGE_LOCATION
 
-    /usr/bin/murmurd -ini /etc/murmur.ini -supw $SUPERUSER_PASSWORD
+    /opt/murmur/murmur.x86 -ini /etc/murmur/murmur.ini -supw $SUPERUSER_PASSWORD
     sleep 3
 
     echo "============================================="
     echo
-    echo "[ ! ] SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
+    echo "[ ! ] SUPERUSER PASSWORD: $SUPERUSER_PASSWORD"
     echo
     echo "============================================="
+    echo
 fi
 
 # start murmurd
-/usr/bin/murmurd
+/opt/murmur/murmur.x86 -fg -v -ini /etc/murmur/murmur.ini
