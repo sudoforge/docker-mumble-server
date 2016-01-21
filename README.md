@@ -76,6 +76,9 @@ docker run -d -p <HOST-PORT>:64738 --name <CONTAINER-NAME> <IMAGE-NAME>
 | CONTAINER-NAME | Desired name for the container         |
 | IMAGE-NAME     | The base image's name                  |
 
+You can additionally pass in `-e SERVER_PASSWORD='<your-password-here>'` to
+configure the murmur instance with a password.
+
 ### Logging in as SuperUser
 
 Each new container will have a unique password for `SuperUser`, the
