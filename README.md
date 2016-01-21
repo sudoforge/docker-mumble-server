@@ -14,7 +14,7 @@ instances on the same host.
 ```bash
 $ docker images
 REPOSITORY                     TAG         VIRTUAL SIZE
-bddenhartog/docker-murmur      latest      57.79 MB
+bddenhartog/docker-murmur      latest      40.18 MB
 ```
 
 ## Getting started
