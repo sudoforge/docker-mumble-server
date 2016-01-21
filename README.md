@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur)
+[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/bddenhartog/docker-murmur/latest.svg)]()
 [![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg?style=flat)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
 
 # docker-murmur
