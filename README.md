@@ -76,8 +76,29 @@ docker run -d -p <HOST-PORT>:64738 --name <CONTAINER-NAME> <IMAGE-NAME>
 | CONTAINER-NAME | Desired name for the container         |
 | IMAGE-NAME     | The base image's name                  |
 
-You can additionally pass in `-e SERVER_PASSWORD='<your-password-here>'` to
-configure the murmur instance with a password.
+### Configure Container
+Each variable can be set by passing it as an environment variable (`-e`) to the server.
+
+For example: `-e MUMBLE_SERVERPASSWORD=somereallysecretpassword`.
+
+Here is a list of all options:
+
+|Variable|Setting|
+|--------|-------|
+|`MUMBLE_SERVERPASSWORD`|[serverpassword](https://wiki.mumble.info/wiki/Murmur.ini#serverpassword)|
+|`MUMBLE_DEFAULTCHANNEL`|[defaultchannel](https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel)|
+|`MUMBLE_REGISTER_HOSTNAME`|[registerHostname](https://wiki.mumble.info/wiki/Murmur.ini#registerHostname)|
+|`MUMBLE_REGISTER_PASSWORD`|[registerpassword](https://wiki.mumble.info/wiki/Murmur.ini#registerPassword)|
+|`MUMBLE_REGISTER_URL`|[registerurl](https://wiki.mumble.info/wiki/Murmur.ini#registerUrl)|
+|`MUMBLE_REGISTER_NAME`|[registername](https://wiki.mumble.info/wiki/Murmur.ini#registerName)|
+|`MUMBLE_USERLIMIT`|[users](https://wiki.mumble.info/wiki/Murmur.ini#users)|
+|`MUMBLE_USERSPERCHANNEL`|[usersperchannel](https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel) (disables global user limit)|
+|`MUMBLE_TEXTLENGTH`|[textmessagelength](https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength)|
+|`MUMBLE_IMAGELENGTH`|[imagemessagelength](https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength)|
+|`MUMBLE_ALLOWHTML`|[allowhtml](https://wiki.mumble.info/wiki/Murmur.ini#allowhtml) (Is disabled by default and by setting the variable it'll enabled)|
+|`MUMBLE_ENABLESSL`|This is a special variable. When you set it you have to provide a key.pem and a cert.pem in your docker volume.|
+
+To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
 
 ### Logging in as SuperUser
 
