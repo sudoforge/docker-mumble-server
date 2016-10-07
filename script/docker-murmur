@@ -4,6 +4,12 @@ if [[ ${SERVER_PASSWORD+x} ]]; then
     sed -i -e "s/serverpassword=/serverpassword=$SERVER_PASSWORD/" /etc/murmur/murmur.ini
 fi
 
+if [[ ${MUMBLE_HOSTNAME+x} ]]; then
+    sed -i -e "s/#registerHostname=/registerHostname=$MUMBLE_HOSTNAME/" /etc/murmur/murmur.ini
+fi
+
+chown -R murmur:nobody /etc/murmur
+
 if [[ ! -f /opt/murmur/supwd ]]; then
 
     STORAGE_LOCATION='/opt/murmur/supwd'
