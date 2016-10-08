@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur)
-[![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg?style=flat)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
+[![Alpine v3.4](https://img.shields.io/badge/alpine-3.4-green.svg?maxAge=2592000)]()
+[![Murmur v1.2.17](https://img.shields.io/badge/murmur-1,2,17-green.svg?maxAge=2592000)]()
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000)](https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
+[![Docker Stars](https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg?maxAge=2592000)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
 
 # docker-murmur
 
@@ -11,103 +15,81 @@ clients to connect to. [Learn More][1].
 `docker-murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
-```bash
-$ docker images
-REPOSITORY                     TAG         VIRTUAL SIZE
-bddenhartog/docker-murmur      latest      40.18 MB
-```
-
 ## Getting started
 
 This guide assumes that you already have [Docker][2] installed.
 
-### **Option 1**: Pull the official image
+### Pull the official image
 
-It's easiest to get going if you pull the image from the [official hub repo][4].
+It's easiest to get going if you pull the image from the [Docker Hub][4]. The 
+image is built automatically from this repository.
 
-```bash
-docker pull bddenhartog/docker-murmur
+```
+$ docker pull bddenhartog/docker-murmur
 ```
 
-Next, you should [create a container](#create-a-container).
-
-### **Option 2**: Install from source
-
-You can also build the image locally.
-
-#### Clone this repository
-
-You'll probably want to clone this repository (or download it some other way).
-This will create the `docker-murmur` folder in your current directory, and clone
-the repository within that:
-
-```bash
-git clone https://github.com/bddenhartog/docker-murmur.git
-```
-
-#### Build the image locally
-
-Next, you'll need to build the base image locally as it is not maintained on
-Docker Hub (because the `data` directory is shared from all containers spawned
-from the base image, it wouldn't make sense to share that base image -- in other
-words, I wouldn't recommend putting your image on DockerHub).
-
-Assuming you haven't moved directories yet, let's build an image with the
-`docker-murmur` tag, so that we can easily reference it.
-
-```bash
-cd docker-murmur
-docker build -t docker-murmur .
-```
-
-Next, you should [create a container](#create-a-container).
+> #### Alternatively, install from source.
+> ```
+> $ git clone https://github.com/bddenhartog/docker-murmur.git
+> $ cd docker-murmur
+> $ docker build -t bddenhartog/docker-murmur .
+> ```
+>
+> Windows users should run `git config --global core.autocrlf false` prior to 
+> cloning to avoid line ending issues with the files that are added to the 
+> image.
 
 ### Create a container
 
-Now that you have a "base image", let's get a container up and running.
+Now that you have the image built, it's time to get a container up and running.
 
-```bash
-docker run -d -p <HOST-PORT>:64738 --name <CONTAINER-NAME> <IMAGE-NAME>
+```
+$ docker run -d \
+    -p 64738:64738 \
+    --name murmur-001 \
+    bddenhartog/docker-murmur
 ```
 
-| Original       | Replace with                           |
-| -------------- | -------------------------------------- |
-| HOST-POST      | An available port on the host machine  |
-| CONTAINER-NAME | Desired name for the container         |
-| IMAGE-NAME     | The base image's name                  |
+### Configuration options
+The following variables can be passed into the container (when you execute 
+`docker run`) to change various confirguation options.
 
-### Configure Container
-Each variable can be set by passing it as an environment variable (`-e`) to the server.
+For example:
 
-For example: `-e MUMBLE_SERVERPASSWORD=somereallysecretpassword`.
+```
+$ docker run -d \
+    -p 64738:64738 \
+    -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
+    bddenhartog/docker-murmur
+```
 
 Here is a list of all options:
 
-|Variable|Setting|
-|--------|-------|
-|`MUMBLE_SERVERPASSWORD`|[serverpassword](https://wiki.mumble.info/wiki/Murmur.ini#serverpassword)|
-|`MUMBLE_DEFAULTCHANNEL`|[defaultchannel](https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel)|
-|`MUMBLE_REGISTER_HOSTNAME`|[registerHostname](https://wiki.mumble.info/wiki/Murmur.ini#registerHostname)|
-|`MUMBLE_REGISTER_PASSWORD`|[registerpassword](https://wiki.mumble.info/wiki/Murmur.ini#registerPassword)|
-|`MUMBLE_REGISTER_URL`|[registerurl](https://wiki.mumble.info/wiki/Murmur.ini#registerUrl)|
-|`MUMBLE_REGISTER_NAME`|[registername](https://wiki.mumble.info/wiki/Murmur.ini#registerName)|
-|`MUMBLE_USERLIMIT`|[users](https://wiki.mumble.info/wiki/Murmur.ini#users)|
-|`MUMBLE_USERSPERCHANNEL`|[usersperchannel](https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel) (disables global user limit)|
-|`MUMBLE_TEXTLENGTH`|[textmessagelength](https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength)|
-|`MUMBLE_IMAGELENGTH`|[imagemessagelength](https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength)|
-|`MUMBLE_ALLOWHTML`|[allowhtml](https://wiki.mumble.info/wiki/Murmur.ini#allowhtml) (Is disabled by default and by setting the variable it'll enabled)|
-|`MUMBLE_ENABLESSL`|This is a special variable. When you set it you have to provide a key.pem and a cert.pem in your docker volume.|
+| Environment Variable | Default Value | Documentation |
+| -------------------- | ------------- | ------------- |
+| `MUMBLE_SERVERPASSWORD` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#serverpassword]() |
+| `MUMBLE_DEFAULTCHANNEL` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel]() |
+| `MUMBLE_REGISTERHOSTNAME` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#registerHostname]() |
+| `MUMBLE_REGISTERPASSWORD` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#registerPassword]() |
+| `MUMBLE_REGISTERURL` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#registerUrl]() |
+| `MUMBLE_REGISTERNAME` | `Root` | [https://wiki.mumble.info/wiki/Murmur.ini#registerName]() |
+| `MUMBLE_USERLIMIT` | `50` | [https://wiki.mumble.info/wiki/Murmur.ini#users]() |
+| `MUMBLE_USERSPERCHANNEL` | `NO LIMIT` | [https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel]() |
+| `MUMBLE_TEXTLENGTH` | `5000` | [https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength]() |
+| `MUMBLE_IMAGELENGTH` |`131072` | [https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength]() |
+| `MUMBLE_ALLOWHTML` | `TRUE` | [https://wiki.mumble.info/wiki/Murmur.ini#allowhtml]() |
+| `MUMBLE_ENABLESSL` | `DISABLED` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
 
 To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
 
 ### Logging in as SuperUser
 
-Each new container will have a unique password for `SuperUser`, the
-administrative user for your Murmur server. To get this password, simply view
-the container logs. It is recommended that you save SuperUser's password
-somewhere safe for each container.
+Each new container will have a unique password automatically generated for 
+`SuperUser`, the administrative user for the Murmur server. To get this 
+password, simply view the container logs. It is recommended that you save 
+the password somewhere safe for each container.
 
-```shell
+```
 $ docker logs <CONTAINER-NAME>
 
 ...
@@ -116,16 +98,12 @@ $ docker logs <CONTAINER-NAME>
 [ ! ] SUPERUSER_PASSWORD: <generated-pw>
 
 =============================================
+...
 ```
 
 ## Updating
 
-To update, you should perform the following steps _in order_:
-
-1.  Stop and kill all of your active `docker-murmur` containers.
-2.  Enter the directory on your host machine for the repo.
-3.  Run `git pull` to receive the latest changes.
-4.  Follow the installation instructions ()
+To update your image locally, simply run `docker pull bddenhartog/docker-murmur`.
 
 ## License
 
