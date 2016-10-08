@@ -21,7 +21,7 @@ if [[ ${MUMBLE_REGISTERURL+x} ]]; then
 fi
 
 if [[ ${MUMBLE_REGISTERNAME+x} ]]; then
-    sed -i -e "s/#registerName=Docker-Mumble/registerName=$MUMBLE_REGISTERNAME/" /etc/murmur/murmur.ini
+    sed -i -e "s/#registerName=/registerName=$MUMBLE_REGISTERNAME/" /etc/murmur/murmur.ini
 fi
 
 if [[ ${MUMBLE_USERLIMIT+x} ]]; then
@@ -37,7 +37,7 @@ if [[ ${MUMBLE_TEXTLENGTH+x} ]]; then
 fi
 
 if [[ ${MUMBLE_IMAGELENGTH+x} ]]; then
-    sed -i -e "s/#imagemessagelength=5000/imagemessagelength=$MUMBLE_IMAGELENGTH/" /etc/murmur/murmur.ini
+    sed -i -e "s/#imagemessagelength=131072/imagemessagelength=$MUMBLE_IMAGELENGTH/" /etc/murmur/murmur.ini
 fi
 
 if [[ ${MUMBLE_ALLOWHTML} -eq 1 ]]; then
