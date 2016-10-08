@@ -8,20 +8,20 @@ if [[ ${MUMBLE_DEFAULTCHANNEL+x} ]]; then
     sed -i -e "s/#defaultchannel=/defaultchannel=$MUMBLE_DEFAULTCHANNEL/" /etc/murmur/murmur.ini
 fi
 
-if [[ ${MUMBLE_REGISTER_HOSTNAME+x} ]]; then
-    sed -i -e "s/#registerHostname=/registerHostname=$MUMBLE_REGISTER_HOSTNAME/" /etc/murmur/murmur.ini
+if [[ ${MUMBLE_REGISTERHOSTNAME+x} ]]; then
+    sed -i -e "s/#registerHostname=/registerHostname=$MUMBLE_REGISTERHOSTNAME/" /etc/murmur/murmur.ini
 fi
 
-if [[ ${MUMBLE_REGISTER_PASSWORD+x} ]]; then
-    sed -i -e "s/#registerPassword=/registerPassword=$MUMBLE_REGISTER_PASSWORD/" /etc/murmur/murmur.ini
+if [[ ${MUMBLE_REGISTERPASSWORD+x} ]]; then
+    sed -i -e "s/#registerPassword=/registerPassword=$MUMBLE_REGISTERPASSWORD/" /etc/murmur/murmur.ini
 fi
 
-if [[ ${MUMBLE_REGISTER_URL+x} ]]; then
-    sed -i -e "s/#registerUrl=/registerUrl=$MUMBLE_REGISTER_URL/" /etc/murmur/murmur.ini
+if [[ ${MUMBLE_REGISTERURL+x} ]]; then
+    sed -i -e "s/#registerUrl=/registerUrl=$MUMBLE_REGISTERURL/" /etc/murmur/murmur.ini
 fi
 
-if [[ ${MUMBLE_REGISTER_NAME+x} ]]; then
-    sed -i -e "s/#registerName=Docker-Mumble/registerName=$MUMBLE_REGISTER_NAME/" /etc/murmur/murmur.ini
+if [[ ${MUMBLE_REGISTERNAME+x} ]]; then
+    sed -i -e "s/#registerName=Docker-Mumble/registerName=$MUMBLE_REGISTERNAME/" /etc/murmur/murmur.ini
 fi
 
 if [[ ${MUMBLE_USERLIMIT+x} ]]; then
