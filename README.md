@@ -1,9 +1,4 @@
-[![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur)
-[![Alpine v3.4](https://img.shields.io/badge/alpine-3.4-green.svg?maxAge=2592000)]()
-[![Murmur v1.2.17](https://img.shields.io/badge/murmur-1,2,17-green.svg?maxAge=2592000)]()
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000)](https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md)
-[![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
-[![Docker Stars](https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg?maxAge=2592000)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
+[![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur) [![Alpine v3.4](https://img.shields.io/badge/alpine-3.4-green.svg?maxAge=2592000)]() [![Murmur v1.2.17](https://img.shields.io/badge/murmur-1,2,17-green.svg?maxAge=2592000)]() [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000)](https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md) [![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg)](https://hub.docker.com/r/bddenhartog/docker-murmur/) [![Docker Stars](https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg?maxAge=2592000)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
 
 # docker-murmur
 
