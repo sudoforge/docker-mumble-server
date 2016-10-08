@@ -1,16 +1,67 @@
 #!/bin/sh
 
-if [[ ${SERVER_PASSWORD+x} ]]; then
-    sed -i -e "s/serverpassword=/serverpassword=$SERVER_PASSWORD/" /etc/murmur/murmur.ini
+if [[ ${MUMBLE_SERVERPASSWORD+x} ]]; then
+    sed -i -e "s/serverpassword=/serverpassword=$MUMBLE_SERVERPASSWORD/" /etc/murmur/murmur.ini
 fi
 
-if [[ ! -f /opt/murmur/supwd ]]; then
+if [[ ${MUMBLE_DEFAULTCHANNEL+x} ]]; then
+    sed -i -e "s/#defaultchannel=/defaultchannel=$MUMBLE_DEFAULTCHANNEL/" /etc/murmur/murmur.ini
+fi
 
-    STORAGE_LOCATION='/opt/murmur/supwd'
+if [[ ${MUMBLE_REGISTER_HOSTNAME+x} ]]; then
+    sed -i -e "s/#registerHostname=/registerHostname=$MUMBLE_REGISTER_HOSTNAME/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_REGISTER_PASSWORD+x} ]]; then
+    sed -i -e "s/#registerPassword=/registerPassword=$MUMBLE_REGISTER_PASSWORD/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_REGISTER_URL+x} ]]; then
+    sed -i -e "s/#registerUrl=/registerUrl=$MUMBLE_REGISTER_URL/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_REGISTER_NAME+x} ]]; then
+    sed -i -e "s/#registerName=Docker-Mumble/registerName=$MUMBLE_REGISTER_NAME/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_USERLIMIT+x} ]]; then
+    sed -i -e "s/users=50/users=$MUMBLE_USERLIMIT/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_USERSPERCHANNEL+x} ]]; then
+    sed -i -e "s/#usersperchannel=/usersperchannel=$MUMBLE_USERSPERCHANNEL/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_TEXTLENGTH+x} ]]; then
+    sed -i -e "s/#textmessagelength=5000/textmessagelength=$MUMBLE_TEXTLENGTH/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_IMAGELENGTH+x} ]]; then
+    sed -i -e "s/#imagemessagelength=5000/imagemessagelength=$MUMBLE_IMAGELENGTH/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_ALLOWHTML} -eq 1 ]]; then
+    sed -i -e "s/#allowhtml/allowhtml/" /etc/murmur/murmur.ini
+fi
+
+if [[ ${MUMBLE_ENABLESSL} -eq 1 ]]; then
+    sed -i -e "s/#sslCert/sslCert/" /etc/murmur/murmur.ini
+    sed -i -e "s/#sslKey/sslKey/" /etc/murmur/murmur.ini
+fi
+
+if [[ -f /data/welcome.txt ]]; then
+    sed -i -e "s/^welcometext=.*//" /etc/murmur/murmur.ini
+    echo "welcometext=\"" >> /etc/murmur/murmur.ini
+    cat /data/welcome.txt >> /etc/murmur/murmur.ini
+    echo \" >> /etc/murmur/murmur.ini
+fi
+
+cat /etc/murmur/ice.ini >> /etc/murmur/murmur.ini
+
+chown -R murmur:nobody /data/
+
+if [[ ! -f /data/murmur.sqlite ]]; then
     SUPERUSER_PASSWORD=`pwgen -c -n -1 15`
-    echo $SUPERUSER_PASSWORD > $STORAGE_LOCATION
-    chmod 400 $STORAGE_LOCATION
-
     /opt/murmur/murmur.x86 -ini /etc/murmur/murmur.ini -supw $SUPERUSER_PASSWORD
     sleep 3
 
@@ -22,5 +73,5 @@ if [[ ! -f /opt/murmur/supwd ]]; then
     echo
 fi
 
-# start murmurd
-/opt/murmur/murmur.x86 -fg -v -ini /etc/murmur/murmur.ini
+# Run murmur
+/opt/murmur/murmur.x86 -fg -ini /etc/murmur/murmur.ini

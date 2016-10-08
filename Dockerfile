@@ -1,11 +1,10 @@
-FROM alpine:3.3
+FROM alpine:3.4
 
 # set environment variables
-ENV MURMUR_VERSION=1.2.13
+ENV MURMUR_VERSION=1.2.17
 
 # Add helper files
-COPY ./apk/repositories /etc/apk/repositories
-COPY ./murmur/murmur.ini /etc/murmur/murmur.ini
+COPY ./murmur/murmur.ini ./murmur/ice.ini /etc/murmur/
 COPY ./script/docker-murmur /usr/bin/docker-murmur
 
 RUN apk --no-cache add \
@@ -13,13 +12,10 @@ RUN apk --no-cache add \
         openssl \
     && adduser -SDH murmur \
     && mkdir \
+        /data \
         /opt \
-        /var/lib/murmur \
-        /var/log/murmur \
         /var/run/murmur \
     && chown -R murmur:nobody \
-        /var/lib/murmur \
-        /var/log/murmur \
         /var/run/murmur \
         /etc/murmur \
     && wget \
@@ -34,7 +30,7 @@ EXPOSE 64738/tcp 64738/udp
 WORKDIR /etc/murmur
 
 # Add the data volume for data persistence
-VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
+VOLUME ["/data/"]
 
-# Start murmur in the foreground
-ENTRYPOINT ["docker-murmur"]
+# Configure runtime container and start murmur
+ENTRYPOINT ["/usr/bin/docker-murmur"]
