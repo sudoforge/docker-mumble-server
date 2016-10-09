@@ -1,29 +1,29 @@
-[![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur) [![Alpine v3.4](https://img.shields.io/badge/alpine-3.4-green.svg?maxAge=2592000)]() [![Murmur v1.2.17](https://img.shields.io/badge/murmur-1,2,17-green.svg?maxAge=2592000)]() [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000)](https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md) [![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg)](https://hub.docker.com/r/bddenhartog/docker-murmur/) [![Docker Stars](https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg?maxAge=2592000)](https://hub.docker.com/r/bddenhartog/docker-murmur/)
+# docker-murmur [![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur) [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000)][repo-license]
 
-# docker-murmur
+[![Alpine v3.4](https://img.shields.io/badge/alpine-3.4-green.svg?maxAge=2592000)][repo-url] [![Murmur v1.2.17](https://img.shields.io/badge/murmur-1.2.17-green.svg?maxAge=2592000)][repo-url] [![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg)][docker-hub-repo-url] [![Docker Stars](https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg)][docker-hub-repo-url]
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the server that Mumble
-clients to connect to. [Learn More][1].
+clients to connect to. [Learn More][vendor-mumble].
 
 `docker-murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
 ## Getting started
 
-This guide assumes that you already have [Docker][2] installed.
+This guide assumes that you already have [Docker][docker-install-docs] installed.
 
 ### Pull the official image
 
-It's easiest to get going if you pull the image from the [Docker Hub][4]. The 
+It's easiest to get going if you pull the image from the [Docker Hub][docker-hub-repo-url]. The 
 image is built automatically from this repository.
 
 ```
 $ docker pull bddenhartog/docker-murmur
 ```
 
-> #### Alternatively, install from source.
+> #### Alternatively, you can build the image from source.
 > ```
 > $ git clone https://github.com/bddenhartog/docker-murmur.git
 > $ cd docker-murmur
@@ -32,7 +32,7 @@ $ docker pull bddenhartog/docker-murmur
 >
 > Windows users should run `git config --global core.autocrlf false` prior to 
 > cloning to avoid line ending issues with the files that are added to the 
-> image.
+> image when executing `docker build`.
 
 ### Create a container
 
@@ -102,9 +102,14 @@ To update your image locally, simply run `docker pull bddenhartog/docker-murmur`
 
 ## License
 
-Licensed under MIT. [View License][3].
+Licensed under MIT. [View License][repo-license].
 
-[1]: https://en.wikipedia.org/wiki/Mumble_(software) "Wikipedia - Mumble (software)"
-[2]: https://www.docker.com/ "Docker"
-[3]: LICENSE.md "View License"
-[4]: https://hub.docker.com/r/bddenhartog/docker-murmur/ "bddenhartog/docker-murmur"
+---
+
+[![Analytics](https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat)][repo-url]
+
+[repo-url]: https://www.github.com/bddenhartog/docker-murmur
+[repo-license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
+[vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
+[docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
+[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/docker-murmur/ "View on DockerHub"
