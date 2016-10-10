@@ -62,17 +62,17 @@ Here is a list of all options:
 
 | Environment Variable | Default Value | Documentation |
 | -------------------- | ------------- | ------------- |
-| `MUMBLE_SERVERPASSWORD` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#serverpassword]() |
-| `MUMBLE_DEFAULTCHANNEL` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel]() |
-| `MUMBLE_REGISTERHOSTNAME` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#registerHostname]() |
-| `MUMBLE_REGISTERPASSWORD` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#registerPassword]() |
-| `MUMBLE_REGISTERURL` | `NONE` | [https://wiki.mumble.info/wiki/Murmur.ini#registerUrl]() |
-| `MUMBLE_REGISTERNAME` | `Root` | [https://wiki.mumble.info/wiki/Murmur.ini#registerName]() |
-| `MUMBLE_USERLIMIT` | `50` | [https://wiki.mumble.info/wiki/Murmur.ini#users]() |
-| `MUMBLE_USERSPERCHANNEL` | `NO LIMIT` | [https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel]() |
-| `MUMBLE_TEXTLENGTH` | `5000` | [https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength]() |
-| `MUMBLE_IMAGELENGTH` |`131072` | [https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength]() |
-| `MUMBLE_ALLOWHTML` | `TRUE` | [https://wiki.mumble.info/wiki/Murmur.ini#allowhtml]() |
+| `MUMBLE_SERVERPASSWORD` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#serverpassword |
+| `MUMBLE_DEFAULTCHANNEL` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel |
+| `MUMBLE_REGISTERHOSTNAME` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#registerHostname |
+| `MUMBLE_REGISTERPASSWORD` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#registerPassword |
+| `MUMBLE_REGISTERURL` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#registerUrl |
+| `MUMBLE_REGISTERNAME` | `Root` | https://wiki.mumble.info/wiki/Murmur.ini#registerName |
+| `MUMBLE_USERLIMIT` | `50` | https://wiki.mumble.info/wiki/Murmur.ini#users |
+| `MUMBLE_USERSPERCHANNEL` | `NO LIMIT` | https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel |
+| `MUMBLE_TEXTLENGTH` | `5000` | https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength |
+| `MUMBLE_IMAGELENGTH` |`131072` | https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength |
+| `MUMBLE_ALLOWHTML` | `TRUE` | https://wiki.mumble.info/wiki/Murmur.ini#allowhtml |
 | `MUMBLE_ENABLESSL` | `DISABLED` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
 
 To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
