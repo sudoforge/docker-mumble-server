@@ -16,45 +16,47 @@ This guide assumes that you already have [Docker][docker-install-docs] installed
 
 ### Pull the official image
 
-It's easiest to get going if you pull the image from the [Docker Hub][docker-hub-repo-url]. The 
+It's easiest to get going if you pull the image from the [Docker Hub][docker-hub-repo-url]. The
 image is built automatically from this repository.
 
-```
-$ docker pull bddenhartog/docker-murmur
+```text
+docker pull bddenhartog/docker-murmur
 ```
 
-> #### Alternatively, you can build the image from source.
-> ```
-> $ git clone https://github.com/bddenhartog/docker-murmur.git
-> $ cd docker-murmur
-> $ docker build -t bddenhartog/docker-murmur .
+> #### Alternatively, you can build the image from source
+> ```text
+> git clone https://github.com/bddenhartog/docker-murmur.git
+> cd docker-murmur
+> docker build -t bddenhartog/docker-murmur .
 > ```
 >
-> Windows users should run `git config --global core.autocrlf false` prior to 
-> cloning to avoid line ending issues with the files that are added to the 
+> Windows users should run `git config --global core.autocrlf false` prior to
+> cloning to avoid line ending issues with the files that are added to the
 > image when executing `docker build`.
 
 ### Create a container
 
 Now that you have the image built, it's time to get a container up and running.
 
-```
-$ docker run -d \
+```text
+docker run -d \
     -p 64738:64738 \
     --name murmur-001 \
     bddenhartog/docker-murmur
 ```
 
 ### Configuration options
-The following variables can be passed into the container (when you execute 
+
+The following variables can be passed into the container (when you execute
 `docker run`) to change various confirguation options.
 
 For example:
 
-```
-$ docker run -d \
+```text
+docker run -d \
     -p 64738:64738 \
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
+    --name murmur-001 \
     bddenhartog/docker-murmur
 ```
 
@@ -62,38 +64,36 @@ Here is a list of all options:
 
 | Environment Variable | Default Value | Documentation |
 | -------------------- | ------------- | ------------- |
-| `MUMBLE_SERVERPASSWORD` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#serverpassword |
-| `MUMBLE_DEFAULTCHANNEL` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel |
-| `MUMBLE_REGISTERHOSTNAME` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#registerHostname |
-| `MUMBLE_REGISTERPASSWORD` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#registerPassword |
-| `MUMBLE_REGISTERURL` | `NONE` | https://wiki.mumble.info/wiki/Murmur.ini#registerUrl |
-| `MUMBLE_REGISTERNAME` | `Root` | https://wiki.mumble.info/wiki/Murmur.ini#registerName |
-| `MUMBLE_USERLIMIT` | `50` | https://wiki.mumble.info/wiki/Murmur.ini#users |
-| `MUMBLE_USERSPERCHANNEL` | `NO LIMIT` | https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel |
-| `MUMBLE_TEXTLENGTH` | `5000` | https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength |
-| `MUMBLE_IMAGELENGTH` |`131072` | https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength |
-| `MUMBLE_ALLOWHTML` | `TRUE` | https://wiki.mumble.info/wiki/Murmur.ini#allowhtml |
+| `MUMBLE_SERVERPASSWORD` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#serverpassword> |
+| `MUMBLE_DEFAULTCHANNEL` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel> |
+| `MUMBLE_REGISTERHOSTNAME` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerHostname> |
+| `MUMBLE_REGISTERPASSWORD` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerPassword> |
+| `MUMBLE_REGISTERURL` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerUrl> |
+| `MUMBLE_REGISTERNAME` | `Root` | <https://wiki.mumble.info/wiki/Murmur.ini#registerName> |
+| `MUMBLE_USERLIMIT` | `50` | <https://wiki.mumble.info/wiki/Murmur.ini#users> |
+| `MUMBLE_USERSPERCHANNEL` | `NO LIMIT` | <https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel> |
+| `MUMBLE_TEXTLENGTH` | `5000` | <https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength> |
+| `MUMBLE_IMAGELENGTH` |`131072` | <https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength> |
+| `MUMBLE_ALLOWHTML` | `TRUE` | <https://wiki.mumble.info/wiki/Murmur.ini#allowhtml> |
 | `MUMBLE_ENABLESSL` | `DISABLED` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
 
 To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
 
 ### Logging in as SuperUser
 
-Each new container will have a unique password automatically generated for 
-`SuperUser`, the administrative user for the Murmur server. To get this 
-password, simply view the container logs. It is recommended that you save 
+Each new container will have a unique password automatically generated for
+`SuperUser`, the administrative user for the Murmur server. To get this
+password, simply view the container logs. It is recommended that you save
 the password somewhere safe for each container.
 
-```
-$ docker logs <CONTAINER-NAME>
-
-...
-=============================================
-
-[ ! ] SUPERUSER_PASSWORD: <generated-pw>
-
-=============================================
-...
+```text
+$ docker logs murmur-001
+>
+> =============================================
+>
+> [ ! ] SUPERUSER_PASSWORD: <generated-pw>
+>
+> =============================================
 ```
 
 ## Updating
