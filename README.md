@@ -62,8 +62,8 @@ docker run -d \
 
 Here is a list of all options:
 
-| Environment Variable | Default Value | Documentation |
-| -------------------- | ------------- | ------------- |
+| Environment Variable | Default Value | Details |
+| -------------------- | ------------- | ------- |
 | `MUMBLE_SERVERPASSWORD` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#serverpassword> |
 | `MUMBLE_DEFAULTCHANNEL` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel> |
 | `MUMBLE_REGISTERHOSTNAME` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerHostname> |
@@ -76,24 +76,22 @@ Here is a list of all options:
 | `MUMBLE_IMAGELENGTH` |`131072` | <https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength> |
 | `MUMBLE_ALLOWHTML` | `TRUE` | <https://wiki.mumble.info/wiki/Murmur.ini#allowhtml> |
 | `MUMBLE_ENABLESSL` | `DISABLED` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
+| `SUPERUSER_PASSWORD` | `NONE` | If not defined, a password will be automatically generated. |
 
 To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
 
 ### Logging in as SuperUser
 
-Each new container will have a unique password automatically generated for
-`SuperUser`, the administrative user for the Murmur server. To get this
-password, simply view the container logs. It is recommended that you save
-the password somewhere safe for each container.
+If the environment variable `SUPERUSER_PASSWORD` is not defined when creating
+the container, a password will be automatically generated. To view the password
+for any container at any time, look at the container's logs. As an example, to
+view the SuperUser password is for an instance running in a container
+named `murmur-001`:
+
 
 ```text
-$ docker logs murmur-001
->
-> =============================================
->
-> [ ! ] SUPERUSER_PASSWORD: <generated-pw>
->
-> =============================================
+$ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
+> SUPERUSER_PASSWORD: <value>
 ```
 
 ## Updating
