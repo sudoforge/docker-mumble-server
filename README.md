@@ -60,23 +60,47 @@ docker run -d \
     bddenhartog/docker-murmur
 ```
 
-Here is a list of all options:
+Here is a list of all options supported through environment variables:
 
-| Environment Variable | Default Value | Details |
-| -------------------- | ------------- | ------- |
-| `MUMBLE_SERVERPASSWORD` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#serverpassword> |
-| `MUMBLE_DEFAULTCHANNEL` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel> |
-| `MUMBLE_REGISTERHOSTNAME` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerHostname> |
-| `MUMBLE_REGISTERPASSWORD` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerPassword> |
-| `MUMBLE_REGISTERURL` | `NONE` | <https://wiki.mumble.info/wiki/Murmur.ini#registerUrl> |
-| `MUMBLE_REGISTERNAME` | `Root` | <https://wiki.mumble.info/wiki/Murmur.ini#registerName> |
-| `MUMBLE_USERLIMIT` | `50` | <https://wiki.mumble.info/wiki/Murmur.ini#users> |
-| `MUMBLE_USERSPERCHANNEL` | `NO LIMIT` | <https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel> |
-| `MUMBLE_TEXTLENGTH` | `5000` | <https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength> |
-| `MUMBLE_IMAGELENGTH` |`131072` | <https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength> |
-| `MUMBLE_ALLOWHTML` | `TRUE` | <https://wiki.mumble.info/wiki/Murmur.ini#allowhtml> |
-| `MUMBLE_ENABLESSL` | `DISABLED` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
-| `SUPERUSER_PASSWORD` | `NONE` | If not defined, a password will be automatically generated. |
+| Environment Variable | Default Value | Documentation/Details |
+| -------------------- | ------------- | --------------------- |
+| `MUMBLE_ICE` | `SEE DOCS` | [Murmur.ini::ice][mdoc-ice] |
+| `MUMBLE_ICESECRETREAD` | `---` | [Murmur.ini::icesecretread][mdoc-group-icesecret] |
+| `MUMBLE_ICESECRETWRITE` | `---` | [Murmur.ini::icesecretwrite][mdoc-group-icesecret] |
+| `MUMBLE_AUTOBANATTEMPTS` | `10`    | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
+| `MUMBLE_AUTOBANTIMEFRAME` | `120` | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
+| `MUMBLE_AUTOBANTIME` | `300` | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
+| `MUMBLE_SERVERPASSWORD`| `---` | [Murmur.ini::serverpassword][mdoc-serverpassword] |
+| `MUMBLE_OBFUSCATE` | `false` | [Murmur.ini::obfuscate][mdoc-obfuscate] |
+| `MUMBLE_SENDVERSION` | `true`| [Murmur.ini::sendversion][mdoc-sendversion] |
+| `MUMBLE_LEGACYPASSWORDHASH` | `false` | [Murmur.ini::legacyPasswordHash][mdoc-legacyPasswordHash] |
+| `MUMBLE_KDFITERATIONS` | `-1`| [Murmur.ini::kdfIterations][mdoc-kdfIterations] |
+| `MUMBLE_ALLOWPING` | `true`| [Murmur.ini::allowping][mdoc-allowping] |
+| `MUMBLE_WELCOMETEXT` | `---`| [Murmur.ini::welcometext][mdoc-welcometext] |
+| `MUMBLE_BANDWIDTH` | `7200`| [Murmur.ini::bandwidth][mdoc-bandwidth] |
+| `MUMBLE_TIMEOUT` | `30`| [Murmur.ini::timeout][mdoc-timeout] |
+| `MUMBLE_USERS` | `100` | [Murmur.ini::users][mdoc-users] |
+| `MUMBLE_USERSPERCHANNEL` | `0` | [Murmur.ini::usersperchannel][mdoc-usersperchannel] |
+| `MUMBLE_USERNAME`| `SEE DOCS` | [Murmur.ini::username][mdoc-group-channelusername] |
+| `MUMBLE_CHANNELNAME` | `SEE DOCS` | [Murmur.ini::channelname][mdoc-group-channelusername] |
+| `MUMBLE_DEFAULTCHANNEL`| `---` | [Murmur.ini::defaultchannel][mdoc-defaultchannel] |
+| `MUMBLE_REMEMBERCHANNEL` | `true`| [Murmur.ini::rememberchannel][mdoc-rememberchannel] |
+| `MUMBLE_TEXTMESSAGELENGTH`| `5000`| [Murmur.ini::textmessagelength][mdoc-textmessagelength] |
+| `MUMBLE_IMAGEMESSAGELENGTH` |`131072` | [Murmur.ini::imagemessagelength][mdoc-imagemessagelength] |
+| `MUMBLE_ALLOWHTML` | `true`| [Murmur.ini::allowhtml][mdoc-allowhtml] |
+| `MUMBLE_OPUSTHRESHOLD` | `100` | [Murmur.ini::opusthreshold][mdoc-opusthreshold] |
+| `MUMBLE_REGISTERHOSTNAME` | `---` | [Murmur.ini::registerHostname][mdoc-registerHostname] |
+| `MUMBLE_REGISTERPASSWORD` | `---` | [Murmur.ini::registerPassword][mdoc-registerPassword] |
+| `MUMBLE_REGISTERURL` | `---` | [Murmur.ini::registerUrl][mdoc-registerUrl] |
+| `MUMBLE_REGISTERNAME`| `Root`| [Murmur.ini::registerName][mdoc-registerName] |
+| `MUMBLE_SUGGESTVERSION`| `false` | [Murmur.ini::suggestVersion][mdoc-suggestVersion] |
+| `MUMBLE_SUGGESTPOSITIONAL`| `false` | [Murmur.ini::suggestPositional][mdoc-suggestPositional] |
+| `MUMBLE_SUGGESTPUSHTOTALK`| `false` | [Murmur.ini::suggestPushToTalk][mdoc-suggestPushToTalk] |
+| `MUMBLE_ENABLESSL` | `0` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
+| `MUMBLE_SSLPASSPHRASE` | `---` | Set the plaintext passphrase for an SSL key. No effect unless `MUMBLE_ENABLESSL` is `1`. |
+| `SUPERUSER_PASSWORD` | `---` | If not defined, a password will be automatically generated. |
+
+### Custom welcome text
 
 To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
 
@@ -111,3 +135,31 @@ Licensed under MIT. [View License][repo-license].
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
 [docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/docker-murmur/ "View on DockerHub"
+[mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
+[mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
+[mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime
+[mdoc-serverpassword]: https://wiki.mumble.info/wiki/Murmur.ini#serverpassword
+[mdoc-obfuscate]: https://wiki.mumble.info/wiki/Murmur.ini#obfuscate
+[mdoc-sendversion]: https://wiki.mumble.info/wiki/Murmur.ini#sendversion
+[mdoc-legacyPasswordHash]: https://wiki.mumble.info/wiki/Murmur.ini#legacyPasswordHash
+[mdoc-kdfiterations]: https://wiki.mumble.info/wiki/Murmur.ini#kdfIterations
+[mdoc-allowping]: https://wiki.mumble.info/wiki/Murmur.ini#allowping
+[mdoc-welcometext]: https://wiki.mumble.info/wiki/Murmur.ini#welcometext
+[mdoc-bandwidth]: https://wiki.mumble.info/wiki/Murmur.ini#bandwidth
+[mdoc-timeout]: https://wiki.mumble.info/wiki/Murmur.ini#timeout
+[mdoc-users]: https://wiki.mumble.info/wiki/Murmur.ini#users
+[mdoc-usersperchannel]: https://wiki.mumble.info/wiki/Murmur.ini#usersperchannel
+[mdoc-group-channelusername]: https://wiki.mumble.info/wiki/Murmur.ini#channelname_and_username
+[mdoc-defaultchannel]: https://wiki.mumble.info/wiki/Murmur.ini#defaultchannel
+[mdoc-rememberchannel]: https://wiki.mumble.info/wiki/Murmur.ini#rememberchannel
+[mdoc-textmessagelength]: https://wiki.mumble.info/wiki/Murmur.ini#textmessagelength
+[mdoc-imagemessagelength]: https://wiki.mumble.info/wiki/Murmur.ini#imagemessagelength
+[mdoc-allowhtml]: https://wiki.mumble.info/wiki/Murmur.ini#allowhtml
+[mdoc-opusthreshold]: https://wiki.mumble.info/wiki/Murmur.ini#opusthreshold
+[mdoc-registerHostname]: https://wiki.mumble.info/wiki/Murmur.ini#registerHostname
+[mdoc-registerPassword]: https://wiki.mumble.info/wiki/Murmur.ini#registerPassword
+[mdoc-registerUrl]: https://wiki.mumble.info/wiki/Murmur.ini#registerUrl
+[mdoc-registerName]: https://wiki.mumble.info/wiki/Murmur.ini#registerName
+[mdoc-suggestVersion]: https://wiki.mumble.info/wiki/Murmur.ini#suggestVersion
+[mdoc-suggestPositional]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPositional
+[mdoc-suggestPushToTalk]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPushToTalk

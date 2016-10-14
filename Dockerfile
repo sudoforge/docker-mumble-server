@@ -1,10 +1,10 @@
 FROM alpine:3.4
 
-# set environment variables
+# Set environment variables
 ENV MURMUR_VERSION=1.2.17
 
-# Add helper files
-COPY ./murmur/murmur.ini ./murmur/ice.ini /etc/murmur/
+# Copy project files into container
+COPY ./murmur /etc/murmur
 COPY ./script/docker-murmur /usr/bin/docker-murmur
 
 RUN apk --no-cache add \
@@ -27,6 +27,8 @@ RUN apk --no-cache add \
 
 # Exposed port should always match what is set in /murmur/murmur.ini
 EXPOSE 64738/tcp 64738/udp
+
+# Set the working directory
 WORKDIR /etc/murmur
 
 # Add the data volume for data persistence
