@@ -4,3 +4,5 @@
 ## Common files/directories
 *~
 
+## Project-level ignore list
+data/

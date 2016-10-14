@@ -1,62 +1,80 @@
-#!/bin/sh
+#!/usr/bin/env sh
+set -e
 
-if [[ ${MUMBLE_SERVERPASSWORD+x} ]]; then
-    sed -i -e "s/serverpassword=/serverpassword=$MUMBLE_SERVERPASSWORD/" /etc/murmur/murmur.ini
+CONFIGFILE="/etc/murmur/murmur.ini"
+ICEFILE="/etc/murmur/ice.ini"
+WELCOMEFILE="/data/welcome.txt"
+
+setVal() {
+    if [ ${1} ] && [ ${2} ]; then
+        echo "update setting: ${1} with: ${2}"
+        sed -i -E 's;#?('"${1}"'=).*;\1'"${2}"';' "${CONFIGFILE}"
+    fi
+}
+
+setVal ice "${MUMBLE_ICE}"
+setVal icesecretread "${MUMBLE_ICESECRETREAD}"
+setVal icesecretwrite "${MUMBLE_ICESECRETWRITE}"
+setVal autobanAttempts "${MUMBLE_AUTOBANATTEMPTS}"
+setVal autobanTimeframe "${MUMBLE_AUTOBANTIMEFRAME}"
+setVal autobanTime "${MUMBLE_AUTOBANTIME}"
+setVal serverpassword "${MUMBLE_SERVERPASSWORD}"
+setVal obfuscate "${MUMBLE_OBFUSCATE}"
+setVal sendversion "${MUMBLE_SENDVERSION}"
+setVal legacyPasswordHash "${MUMBLE_LEGACYPASSWORDHASH}"
+setVal kdfIterations "${MUMBLE_KDFITERATIONS}"
+setVal allowping "${MUMBLE_ALLOWPING}"
+setVal bandwidth "${MUMBLE_BANDWIDTH}"
+setVal timeout "${MUMBLE_TIMEOUT}"
+setVal certrequired "${MUMBLE_CERTREQUIRED}"
+setVal users "${MUMBLE_USERS}"
+setVal usersperchannel "${MUMBLE_USERSPERCHANNEL}"
+setVal username "${MUMBLE_USERNAME}"
+setVal channelname "${MUMBLE_CHANNELNAME}"
+setVal channelnestinglimit "${MUMBLE_CHANNELNESTINGLIMIT}"
+setVal defaultchannel "${MUMBLE_DEFAULTCHANNEL}"
+setVal rememberchannel "${MUMBLE_REMEMBERCHANNEL}"
+setVal textmessagelength "${MUMBLE_TEXTMESSAGELENGTH}"
+setVal imagemessagelength "${MUMBLE_IMAGEMESSAGELENGTH}"
+setVal allowhtml "${MUMBLE_ALLOWHTML}"
+setVal opusthreshold "${MUMBLE_OPUSTHRESHOLD}"
+setVal registerHostname "${MUMBLE_REGISTERHOSTNAME}"
+setVal registerPassword "${MUMBLE_REGISTERPASSWORD}"
+setVal registerUrl "${MUMBLE_REGISTERURL}"
+setVal registerName "${MUMBLE_REGISTERNAME}"
+setVal suggestVersion "${MUMBLE_SUGGESTVERSION}"
+setVal suggestPositional "${MUMBLE_SUGGESTPOSITIONAL}"
+setVal suggestPushToTalk "${MUMBLE_SUGGESTPUSHTOTALK}"
+
+if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
+    SSL_CERTFILE=/data/cert.pem
+    SSL_KEYFILE=/data/key.pem
+    SSL_CAFILE=/data/intermediate.pem
+    SSL_DHFILE=/data/dh.pem
+
+    setVal sslCert "${SSL_CERTFILE}"
+    setVal sslKey "${SSL_KEYFILE}"
+    setVal sslPassPhrase "${MUMBLE_SSLPASSPHRASE}"
+
+    if [ -f "${SSL_CAFILE}" ]; then
+        setVal sslCA "${SSL_CAFILE}"
+    fi
+
+    if [ -f "${SSL_DHFILE}" ]; then
+        setVal sslDHParams "${SSL_DHFILE}"
+    fi
 fi
 
-if [[ ${MUMBLE_DEFAULTCHANNEL+x} ]]; then
-    sed -i -e "s/#defaultchannel=/defaultchannel=$MUMBLE_DEFAULTCHANNEL/" /etc/murmur/murmur.ini
+if [ -f ${WELCOMEFILE} ]; then
+    setVal welcometext '"'
+    parsedContent=$(cat "${WELCOMEFILE}" | sed -E 's/"/\\"/g')
+    echo -n "${parsedContent}\"" >> "${CONFIGFILE}"
 fi
 
-if [[ ${MUMBLE_REGISTERHOSTNAME+x} ]]; then
-    sed -i -e "s/#registerHostname=/registerHostname=$MUMBLE_REGISTERHOSTNAME/" /etc/murmur/murmur.ini
+if ! cat "${CONFIGFILE}" | grep '\[Ice\]' > /dev/null 2>&1; then
+    echo "" >> "${CONFIGFILE}"
+    cat "${ICEFILE}" >> "${CONFIGFILE}"
 fi
-
-if [[ ${MUMBLE_REGISTERPASSWORD+x} ]]; then
-    sed -i -e "s/#registerPassword=/registerPassword=$MUMBLE_REGISTERPASSWORD/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_REGISTERURL+x} ]]; then
-    sed -i -e "s/#registerUrl=/registerUrl=$MUMBLE_REGISTERURL/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_REGISTERNAME+x} ]]; then
-    sed -i -e "s/#registerName=/registerName=$MUMBLE_REGISTERNAME/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_USERLIMIT+x} ]]; then
-    sed -i -e "s/users=50/users=$MUMBLE_USERLIMIT/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_USERSPERCHANNEL+x} ]]; then
-    sed -i -e "s/#usersperchannel=/usersperchannel=$MUMBLE_USERSPERCHANNEL/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_TEXTLENGTH+x} ]]; then
-    sed -i -e "s/#textmessagelength=5000/textmessagelength=$MUMBLE_TEXTLENGTH/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_IMAGELENGTH+x} ]]; then
-    sed -i -e "s/#imagemessagelength=131072/imagemessagelength=$MUMBLE_IMAGELENGTH/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_ALLOWHTML} -eq 1 ]]; then
-    sed -i -e "s/#allowhtml/allowhtml/" /etc/murmur/murmur.ini
-fi
-
-if [[ ${MUMBLE_ENABLESSL} -eq 1 ]]; then
-    sed -i -e "s/#sslCert/sslCert/" /etc/murmur/murmur.ini
-    sed -i -e "s/#sslKey/sslKey/" /etc/murmur/murmur.ini
-fi
-
-if [[ -f /data/welcome.txt ]]; then
-    sed -i -e "s/^welcometext=.*//" /etc/murmur/murmur.ini
-    echo "welcometext=\"" >> /etc/murmur/murmur.ini
-    cat /data/welcome.txt >> /etc/murmur/murmur.ini
-    echo \" >> /etc/murmur/murmur.ini
-fi
-
-cat /etc/murmur/ice.ini >> /etc/murmur/murmur.ini
 
 chown -R murmur:nobody /data/
 
@@ -66,9 +84,10 @@ if [[ ! -f /data/murmur.sqlite ]]; then
     fi
 
     echo "SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
-    /opt/murmur/murmur.x86 -ini /etc/murmur/murmur.ini -supw $SUPERUSER_PASSWORD
-    sleep 3
+    /opt/murmur/murmur.x86 -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD
 fi
 
-# Run murmur
-/opt/murmur/murmur.x86 -fg -ini /etc/murmur/murmur.ini
+# Run murmur if not in debug mode
+if [ -z ${DEBUG_MODE} ] || [ ! ${DEBUG_MODE} -eq 1 ]; then
+    /opt/murmur/murmur.x86 -fg -ini "${CONFIGFILE}"
+fi
