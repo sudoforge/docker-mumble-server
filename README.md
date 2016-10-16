@@ -97,7 +97,7 @@ Here is a list of all options supported through environment variables:
 | [`MUMBLE_SUGGESTPUSHTOTALK`][mdoc-suggestPushToTalk] | `---` |
 | [`MUMBLE_ENABLESSL`](#ssl-certificates-murmurinissl) | `0` |
 | [`MUMBLE_SSLPASSPHRASE`](#ssl-certificates-murmurinissl) | `---` |
-| [`SUPERUSER_PASSWORD`] | If not defined, a password will be auto-generated. |
+| `SUPERUSER_PASSWORD` | If not defined, a password will be auto-generated. |
 
 ### Custom welcome text ([Murmur.ini::welcometext][mdoc-welcometext])
 
