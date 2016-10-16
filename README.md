@@ -62,42 +62,42 @@ docker run -d \
 
 Here is a list of all options supported through environment variables:
 
-| Environment Variable | Default Value | Details |
-| -------------------- | ------------- | ------- |
-| `MUMBLE_ICE` | `tcp -h 127.0.0.1 -p 6502` | [Murmur.ini::ice][mdoc-ice] |
-| `MUMBLE_ICESECRETREAD` | `---` | [Murmur.ini::icesecretread][mdoc-group-icesecret] |
-| `MUMBLE_ICESECRETWRITE` | `---` | [Murmur.ini::icesecretwrite][mdoc-group-icesecret] |
-| `MUMBLE_AUTOBANATTEMPTS` | `10`    | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
-| `MUMBLE_AUTOBANTIMEFRAME` | `120` | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
-| `MUMBLE_AUTOBANTIME` | `300` | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
-| `MUMBLE_SERVERPASSWORD`| `---` | [Murmur.ini::serverpassword][mdoc-serverpassword] |
-| `MUMBLE_OBFUSCATE` | `false` | [Murmur.ini::obfuscate][mdoc-obfuscate] |
-| `MUMBLE_SENDVERSION` | `false`| [Murmur.ini::sendversion][mdoc-sendversion] |
-| `MUMBLE_LEGACYPASSWORDHASH` | `false` | [Murmur.ini::legacyPasswordHash][mdoc-legacyPasswordHash] |
-| `MUMBLE_KDFITERATIONS` | `-1`| [Murmur.ini::kdfIterations][mdoc-kdfIterations] |
-| `MUMBLE_ALLOWPING` | `true`| [Murmur.ini::allowping][mdoc-allowping] |
-| `MUMBLE_BANDWIDTH` | `7200`| [Murmur.ini::bandwidth][mdoc-bandwidth] |
-| `MUMBLE_TIMEOUT` | `30`| [Murmur.ini::timeout][mdoc-timeout] |
-| `MUMBLE_USERS` | `100` | [Murmur.ini::users][mdoc-users] |
-| `MUMBLE_USERSPERCHANNEL` | `0` | [Murmur.ini::usersperchannel][mdoc-usersperchannel] |
-| `MUMBLE_USERNAME`| `[-=\\w\\[\\]\\{\\}\\(\\)\\@\\|\\.]+` | [Murmur.ini::username][mdoc-group-channelusername] |
-| `MUMBLE_CHANNELNAME` | `[ \\-=\\w\\#\\[\\]\\{\\}\\(\\)\\@\\|]+` | [Murmur.ini::channelname][mdoc-group-channelusername] |
-| `MUMBLE_DEFAULTCHANNEL`| `---` | [Murmur.ini::defaultchannel][mdoc-defaultchannel] |
-| `MUMBLE_REMEMBERCHANNEL` | `true`| [Murmur.ini::rememberchannel][mdoc-rememberchannel] |
-| `MUMBLE_TEXTMESSAGELENGTH`| `5000`| [Murmur.ini::textmessagelength][mdoc-textmessagelength] |
-| `MUMBLE_IMAGEMESSAGELENGTH` |`131072` | [Murmur.ini::imagemessagelength][mdoc-imagemessagelength] |
-| `MUMBLE_ALLOWHTML` | `true`| [Murmur.ini::allowhtml][mdoc-allowhtml] |
-| `MUMBLE_OPUSTHRESHOLD` | `100` | [Murmur.ini::opusthreshold][mdoc-opusthreshold] |
-| `MUMBLE_REGISTERHOSTNAME` | `---` | [Murmur.ini::registerHostname][mdoc-registerHostname] |
-| `MUMBLE_REGISTERPASSWORD` | `---` | [Murmur.ini::registerPassword][mdoc-registerPassword] |
-| `MUMBLE_REGISTERURL` | `---` | [Murmur.ini::registerUrl][mdoc-registerUrl] |
-| `MUMBLE_REGISTERNAME`| `---`| [Murmur.ini::registerName][mdoc-registerName] |
-| `MUMBLE_SUGGESTVERSION`| `false` | [Murmur.ini::suggestVersion][mdoc-suggestVersion] |
-| `MUMBLE_SUGGESTPOSITIONAL`| `---` | [Murmur.ini::suggestPositional][mdoc-suggestPositional] |
-| `MUMBLE_SUGGESTPUSHTOTALK`| `---` | [Murmur.ini::suggestPushToTalk][mdoc-suggestPushToTalk] |
-| `MUMBLE_ENABLESSL` | `0` | See [SSL Certificates](#ssl-certificates-murmurinissl) below |
-| `MUMBLE_SSLPASSPHRASE` | `---` | See [SSL Certificates](#ssl-certificates-murmurinissl) below |
-| `SUPERUSER_PASSWORD` | `---` | If not defined, a password will be auto-generated. |
+| Environment Variable | Default Value |
+| -------------------- |  ------------ |
+| [MUMBLE_ICE][mdoc-ice] | `tcp -h 127.0.0.1 -p 6502` |
+| [MUMBLE_ICESECRETREAD][mdoc-group-icesecret] | `---` |
+| [MUMBLE_ICESECRETWRITE][mdoc-group-icesecret] | `---` |
+| [MUMBLE_AUTOBANATTEMPTS][mdoc-group-autoban]  | `10`   |
+| [MUMBLE_AUTOBANTIMEFRAME][mdoc-group-autoban] | `120` |
+| [MUMBLE_AUTOBANTIME][mdoc-group-autoban] | `300` |
+| [MUMBLE_SERVERPASSWORD][mdoc-serverpassword] | `---`  |
+| [MUMBLE_OBFUSCATE][mdoc-obfuscate] | `false` |
+| [MUMBLE_SENDVERSION][mdoc-sendversion] | `false` |
+| [MUMBLE_LEGACYPASSWORDHASH][mdoc-legacyPasswordHash] | `false` |
+| [MUMBLE_KDFITERATIONS][mdoc-kdfIterations] | `-1`|
+| [MUMBLE_ALLOWPING][mdoc-allowping]  | `true` |
+| [MUMBLE_BANDWIDTH][mdoc-bandwidth] | `7200` |
+| [MUMBLE_TIMEOUT][mdoc-timeout] | `30` |
+| [MUMBLE_USERS][mdoc-users] | `100` |
+| [MUMBLE_USERSPERCHANNEL][mdoc-usersperchannel] | `0`  |
+| [MUMBLE_USERNAME][mdoc-group-channelusername] | `[-=\\w\\[\\]\\{\\}\\(\\)\\@\\|\\.]+` |
+| [MUMBLE_CHANNELNAME][mdoc-group-channelusername] | `[ \\-=\\w\\#\\[\\]\\{\\}\\(\\)\\@\\|]+` |
+| [MUMBLE_DEFAULTCHANNEL][mdoc-defaultchannel]| `---` | 
+| [MUMBLE_REMEMBERCHANNEL][mdoc-rememberchannel] | `true`| 
+| [MUMBLE_TEXTMESSAGELENGTH][mdoc-textmessagelength]| `5000`| 
+| [MUMBLE_IMAGEMESSAGELENGTH][mdoc-imagemessagelength] |`131072` |
+| [MUMBLE_ALLOWHTML][mdoc-allowhtml] | `true`|
+| [MUMBLE_OPUSTHRESHOLD][mdoc-opusthreshold] | `100` | 
+| [MUMBLE_REGISTERHOSTNAME][mdoc-registerHostname] | `---` |
+| [MUMBLE_REGISTERPASSWORD][mdoc-registerPassword] | `---` |
+| [MUMBLE_REGISTERURL][mdoc-registerUrl] | `---` | 
+| [MUMBLE_REGISTERNAME][mdoc-registerName]| `---`| 
+| [MUMBLE_SUGGESTVERSION][mdoc-suggestVersion] | `false` | 
+| [MUMBLE_SUGGESTPOSITIONAL][mdoc-suggestPositional] | `---` | 
+| [MUMBLE_SUGGESTPUSHTOTALK][mdoc-suggestPushToTalk] | `---` | 
+| [MUMBLE_ENABLESSL](#ssl-certificates-murmurinissl) | `0` | 
+| [MUMBLE_SSLPASSPHRASE](#ssl-certificates-murmurinissl) | `---` |
+| [SUPERUSER_PASSWORD](#logging-in-as-superuser) | `---` |
 
 ### Custom welcome text ([Murmur.ini::welcometext][mdoc-welcometext])
 
