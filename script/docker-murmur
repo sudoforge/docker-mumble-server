@@ -52,9 +52,14 @@ if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
     SSL_CAFILE=/data/intermediate.pem
     SSL_DHFILE=/data/dh.pem
 
-    setVal sslCert "${SSL_CERTFILE}"
-    setVal sslKey "${SSL_KEYFILE}"
-    setVal sslPassPhrase "${MUMBLE_SSLPASSPHRASE}"
+    if [ -f "${SSL_CERTFILE}" ]; then
+        setVal sslCert "${SSL_CERTFILE}"
+    fi
+
+    if [ -f "${SSL_KEYFILE}" ]; then
+        setVal sslKey "${SSL_KEYFILE}"
+        setVal sslPassPhrase "${MUMBLE_SSLPASSPHRASE}"
+    fi
 
     if [ -f "${SSL_CAFILE}" ]; then
         setVal sslCA "${SSL_CAFILE}"
