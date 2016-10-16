@@ -62,9 +62,9 @@ docker run -d \
 
 Here is a list of all options supported through environment variables:
 
-| Environment Variable | Default Value | Documentation/Details |
-| -------------------- | ------------- | --------------------- |
-| `MUMBLE_ICE` | `SEE DOCS` | [Murmur.ini::ice][mdoc-ice] |
+| Environment Variable | Default Value | Details |
+| -------------------- | ------------- | ------- |
+| `MUMBLE_ICE` | `tcp -h 127.0.0.1 -p 6502` | [Murmur.ini::ice][mdoc-ice] |
 | `MUMBLE_ICESECRETREAD` | `---` | [Murmur.ini::icesecretread][mdoc-group-icesecret] |
 | `MUMBLE_ICESECRETWRITE` | `---` | [Murmur.ini::icesecretwrite][mdoc-group-icesecret] |
 | `MUMBLE_AUTOBANATTEMPTS` | `10`    | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
@@ -72,17 +72,16 @@ Here is a list of all options supported through environment variables:
 | `MUMBLE_AUTOBANTIME` | `300` | [Murmur.ini::autobanAttempts][mdoc-group-autoban] |
 | `MUMBLE_SERVERPASSWORD`| `---` | [Murmur.ini::serverpassword][mdoc-serverpassword] |
 | `MUMBLE_OBFUSCATE` | `false` | [Murmur.ini::obfuscate][mdoc-obfuscate] |
-| `MUMBLE_SENDVERSION` | `true`| [Murmur.ini::sendversion][mdoc-sendversion] |
+| `MUMBLE_SENDVERSION` | `false`| [Murmur.ini::sendversion][mdoc-sendversion] |
 | `MUMBLE_LEGACYPASSWORDHASH` | `false` | [Murmur.ini::legacyPasswordHash][mdoc-legacyPasswordHash] |
 | `MUMBLE_KDFITERATIONS` | `-1`| [Murmur.ini::kdfIterations][mdoc-kdfIterations] |
 | `MUMBLE_ALLOWPING` | `true`| [Murmur.ini::allowping][mdoc-allowping] |
-| `MUMBLE_WELCOMETEXT` | `---`| [Murmur.ini::welcometext][mdoc-welcometext] |
 | `MUMBLE_BANDWIDTH` | `7200`| [Murmur.ini::bandwidth][mdoc-bandwidth] |
 | `MUMBLE_TIMEOUT` | `30`| [Murmur.ini::timeout][mdoc-timeout] |
 | `MUMBLE_USERS` | `100` | [Murmur.ini::users][mdoc-users] |
 | `MUMBLE_USERSPERCHANNEL` | `0` | [Murmur.ini::usersperchannel][mdoc-usersperchannel] |
-| `MUMBLE_USERNAME`| `SEE DOCS` | [Murmur.ini::username][mdoc-group-channelusername] |
-| `MUMBLE_CHANNELNAME` | `SEE DOCS` | [Murmur.ini::channelname][mdoc-group-channelusername] |
+| `MUMBLE_USERNAME`| `[-=\\w\\[\\]\\{\\}\\(\\)\\@\\|\\.]+` | [Murmur.ini::username][mdoc-group-channelusername] |
+| `MUMBLE_CHANNELNAME` | `[ \\-=\\w\\#\\[\\]\\{\\}\\(\\)\\@\\|]+` | [Murmur.ini::channelname][mdoc-group-channelusername] |
 | `MUMBLE_DEFAULTCHANNEL`| `---` | [Murmur.ini::defaultchannel][mdoc-defaultchannel] |
 | `MUMBLE_REMEMBERCHANNEL` | `true`| [Murmur.ini::rememberchannel][mdoc-rememberchannel] |
 | `MUMBLE_TEXTMESSAGELENGTH`| `5000`| [Murmur.ini::textmessagelength][mdoc-textmessagelength] |
@@ -92,17 +91,39 @@ Here is a list of all options supported through environment variables:
 | `MUMBLE_REGISTERHOSTNAME` | `---` | [Murmur.ini::registerHostname][mdoc-registerHostname] |
 | `MUMBLE_REGISTERPASSWORD` | `---` | [Murmur.ini::registerPassword][mdoc-registerPassword] |
 | `MUMBLE_REGISTERURL` | `---` | [Murmur.ini::registerUrl][mdoc-registerUrl] |
-| `MUMBLE_REGISTERNAME`| `Root`| [Murmur.ini::registerName][mdoc-registerName] |
+| `MUMBLE_REGISTERNAME`| `---`| [Murmur.ini::registerName][mdoc-registerName] |
 | `MUMBLE_SUGGESTVERSION`| `false` | [Murmur.ini::suggestVersion][mdoc-suggestVersion] |
-| `MUMBLE_SUGGESTPOSITIONAL`| `false` | [Murmur.ini::suggestPositional][mdoc-suggestPositional] |
-| `MUMBLE_SUGGESTPUSHTOTALK`| `false` | [Murmur.ini::suggestPushToTalk][mdoc-suggestPushToTalk] |
-| `MUMBLE_ENABLESSL` | `0` | When set to `1`, SSL is enabled with `/data/cert.pem` and `/data/key.pem`. |
-| `MUMBLE_SSLPASSPHRASE` | `---` | Set the plaintext passphrase for an SSL key. No effect unless `MUMBLE_ENABLESSL` is `1`. |
-| `SUPERUSER_PASSWORD` | `---` | If not defined, a password will be automatically generated. |
+| `MUMBLE_SUGGESTPOSITIONAL`| `---` | [Murmur.ini::suggestPositional][mdoc-suggestPositional] |
+| `MUMBLE_SUGGESTPUSHTOTALK`| `---` | [Murmur.ini::suggestPushToTalk][mdoc-suggestPushToTalk] |
+| `MUMBLE_ENABLESSL` | `0` | See [SSL Certificates](#ssl-certificates-murmurinissl) below |
+| `MUMBLE_SSLPASSPHRASE` | `---` | See [SSL Certificates](#ssl-certificates-murmurinissl) below |
+| `SUPERUSER_PASSWORD` | `---` | If not defined, a password will be auto-generated. |
 
-### Custom welcome text
+### Custom welcome text ([Murmur.ini::welcometext][mdoc-welcometext])
 
-To customize the welcome text, add the contents to `welcome.txt` and mount that into the container at `/data/welcome.txt`. Be sure to avoid double quotes within the file!
+To customize the welcome text, add the contents to `welcome.txt` and mount that
+into the container at `/data/welcome.txt`. Special characters are escaped
+automatically, but you may want to double check
+
+### SSL Certificates ([Murmur.ini::SSL][mdoc-sslcertkey])
+
+SSL certificate settings are handled a bit differently, to simplify running
+this container. If `MUMBLE_ENABLESSL` is set to `1`, SSL is automatically
+enabled, as long as you have mounted a certificate and key at the
+following locations:
+
+- SSL certificate should be mounted at `/data/cert.pem`
+
+  - If your certificate is signed by an authority that uses a sub-signed or
+    "intermediate" certificate, you should either bundle that with your
+    certificate, or mount it in separately at `/data/intermediate.pem` - this
+    will be automatically detected.
+
+- SSL key should be mounted at `/data/key.pem`
+
+  - If the key has a passphrase, you should define the environment variable
+    `MUMBLE_SSLPASSPHRASE` with the passphrase. This variable does not have
+    any effect if you have not mounted a key *and* enabled SSL.
 
 ### Logging in as SuperUser
 
@@ -111,7 +132,6 @@ the container, a password will be automatically generated. To view the password
 for any container at any time, look at the container's logs. As an example, to
 view the SuperUser password is for an instance running in a container
 named `murmur-001`:
-
 
 ```text
 $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
@@ -163,3 +183,4 @@ Licensed under MIT. [View License][repo-license].
 [mdoc-suggestVersion]: https://wiki.mumble.info/wiki/Murmur.ini#suggestVersion
 [mdoc-suggestPositional]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPositional
 [mdoc-suggestPushToTalk]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPushToTalk
+[mdoc-sslcertkey]: https://wiki.mumble.info/wiki/Murmur.ini#sslCert_and_sslKey
