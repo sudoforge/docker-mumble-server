@@ -29,10 +29,6 @@ docker pull bddenhartog/docker-murmur
 > cd docker-murmur
 > docker build -t bddenhartog/docker-murmur .
 > ```
->
-> Windows users should run `git config --global core.autocrlf false` prior to
-> cloning to avoid line ending issues with the files that are added to the
-> image when executing `docker build`.
 
 ### Create a container
 
