@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:edge
 
 # Set environment variables
 ENV MURMUR_VERSION=1.2.17
@@ -9,7 +9,7 @@ COPY ./script/docker-murmur /usr/bin/docker-murmur
 
 RUN apk --no-cache add \
         pwgen \
-        openssl \
+        libressl \
     && adduser -SDH murmur \
     && mkdir \
         /data \
