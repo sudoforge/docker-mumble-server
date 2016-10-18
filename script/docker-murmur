@@ -68,6 +68,8 @@ if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
     if [ -f "${SSL_DHFILE}" ]; then
         setVal sslDHParams "${SSL_DHFILE}"
     fi
+
+    setVal sslCiphers "${MUMBLE_SSLCIPHERS}"
 fi
 
 if [ -f ${WELCOMEFILE} ]; then
