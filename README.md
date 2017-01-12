@@ -93,6 +93,7 @@ Here is a list of all options supported through environment variables:
 | [`MUMBLE_SUGGESTPUSHTOTALK`][mdoc-suggestPushToTalk] | `---` |
 | [`MUMBLE_ENABLESSL`](#ssl-certificates-murmurinissl) | `0` |
 | [`MUMBLE_SSLPASSPHRASE`](#ssl-certificates-murmurinissl) | `---` |
+| [`MUMBLE_SSLCIPHERS`](#ssl-certificates-murmurinissl) | `---` |
 | `SUPERUSER_PASSWORD` | If not defined, a password will be auto-generated. |
 
 ### Custom welcome text ([Murmur.ini::welcometext][mdoc-welcometext])
@@ -120,6 +121,11 @@ following locations:
   - If the key has a passphrase, you should define the environment variable
     `MUMBLE_SSLPASSPHRASE` with the passphrase. This variable does not have
     any effect if you have not mounted a key *and* enabled SSL.
+
+- Set your preferred cipher suite using `MUMBLE_SSLCIPHERS`
+
+  - This option chooses the cipher suites to make available for use in SSL/TLS.
+    See the [official documentation][mdoc-sslCiphers] for more information.
 
 ### Logging in as SuperUser
 
@@ -180,3 +186,4 @@ Licensed under MIT. [View License][repo-license].
 [mdoc-suggestPositional]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPositional
 [mdoc-suggestPushToTalk]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPushToTalk
 [mdoc-sslcertkey]: https://wiki.mumble.info/wiki/Murmur.ini#sslCert_and_sslKey
+[mdoc-sslCiphers]: https://wiki.mumble.info/wiki/Murmur.ini#sslCiphers

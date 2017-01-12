@@ -1,6 +1,7 @@
-.PHONY: build rebuild run debug remove-all remove-containers remove-image stop-containers
-.DEFAULT:
+.PHONY: default build rebuild run debug remove-all remove-containers remove-image stop-containers
 IMAGE_NAME="bddenhartog/docker-murmur:dev"
+
+default: build run
 
 build:
 	@docker build -t ${IMAGE_NAME} .
@@ -12,7 +13,7 @@ debug:
 	@docker run --rm -it \
 		-p 64738/udp \
 		-p 64738/tcp \
-		-e DEBUG_MODE=1 -e MUMBLE_ICE=potatofarm \
+		-e DEBUG_MODE=1 \
 		-v ${PWD}/script/docker-murmur:/usr/bin/docker-murmur:Z \
 		--entrypoint=sh \
 		${IMAGE_NAME}
