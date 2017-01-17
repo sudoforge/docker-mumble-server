@@ -9,7 +9,7 @@ COPY ./script/docker-murmur /usr/bin/docker-murmur
 
 RUN apk --no-cache add \
         pwgen \
-        openssl \
+        libressl \
     && adduser -SDH murmur \
     && mkdir \
         /data \
