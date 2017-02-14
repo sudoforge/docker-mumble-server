@@ -19,23 +19,21 @@ This guide assumes that you already have [Docker][docker-install-docs] installed
 
 ### Pull the official image
 
-It's easiest to get going if you pull the image from the [Docker Hub][docker-hub-repo-url]. The
-image is built automatically from this repository.
+An image is available from the [Docker Hub][docker-hub-repo-url] registry,
+built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull bddenhartog/docker-murmur
+docker pull bddenhartog/docker-murmur:2.3.0
 ```
 
-> #### Alternatively, you can build the image from source
-> ```text
-> git clone https://github.com/bddenhartog/docker-murmur.git
-> cd docker-murmur
-> docker build -t bddenhartog/docker-murmur .
-> ```
+You don't _need_ to specify a version number, but it's a good idea to so that
+you don't pull `latest` and risk getting different versions on different hosts.
+You can view the available versions by looking at the [Releases][releases]
+page.
 
 ### Create a container
 
-Now that you have the image built, it's time to get a container up and running.
+Now that you have the image pulled, it's time to get a container up and running.
 
 ```text
 docker run -d \
@@ -43,6 +41,9 @@ docker run -d \
     --name murmur-001 \
     bddenhartog/docker-murmur
 ```
+
+You should now be able to open up the Mumble client, and connect to the server
+running at `127.0.0.1:64738`.
 
 ### Configuration options
 
@@ -102,15 +103,18 @@ Here is a list of all options supported through environment variables:
 ### Custom welcome text ([Murmur.ini::welcometext][mdoc-welcometext])
 
 To customize the welcome text, add the contents to `welcome.txt` and mount that
-into the container at `/data/welcome.txt`. Special characters are escaped
-automatically, but you may want to double check
+into the container at `/data/welcome.txt`. Double quote characters (`"`) are
+escaped automatically, but you may want to double check that your message was
+parsed correctly.
 
 ### SSL Certificates ([Murmur.ini::SSL][mdoc-sslcertkey])
 
-SSL certificate settings are handled a bit differently, to simplify running
-this container. If `MUMBLE_ENABLESSL` is set to `1`, SSL is automatically
-enabled, as long as you have mounted a certificate and key at the
-following locations:
+Murmur will generate its own SSL certificates when the daemon is started.
+If you wish to provide your own certificates and ciphers instead, you can do
+so by following the instructions below.
+
+If `MUMBLE_ENABLESSL` is set to `1`, custom SSL is enabled, as long as you have
+mounted a certificate and key at the following locations:
 
 - SSL certificate should be mounted at `/data/cert.pem`
 
@@ -156,6 +160,7 @@ Licensed under MIT. [View License][repo-license].
 [![Analytics](https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat)][repo-url]
 
 [repo-url]: https://www.github.com/bddenhartog/docker-murmur
+[releases]: https://www.github.com/bddenhartog/docker-murmur/releases
 [repo-license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
