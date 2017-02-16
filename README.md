@@ -1,9 +1,6 @@
-# docker-murmur [![Build Status](https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master)](https://travis-ci.org/bddenhartog/docker-murmur) [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000)][repo-license]
+# docker-murmur [![badges-travis-ci]][travis-ci] [![badges-license]][repo-license]
 
-[![Alpine v3.5](https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000)][repo-url]
-[![Murmur v1.2.19](https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000)][repo-url]
-[![Docker Pulls](https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg)][docker-hub-repo-url]
-[![Docker Stars](https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg)][docker-hub-repo-url]
+![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
@@ -157,8 +154,16 @@ Licensed under MIT. [View License][repo-license].
 
 ---
 
-[![Analytics](https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat)][repo-url]
+![badges-analytics]
 
+[badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
+[badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
+[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
+[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
+[badges-license]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000 "MIT License"
+[badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master "Build Status"
+[travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur
+[badges-analytics]: https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat "Analytics"
 [repo-url]: https://www.github.com/bddenhartog/docker-murmur
 [releases]: https://www.github.com/bddenhartog/docker-murmur/releases
 [repo-license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
