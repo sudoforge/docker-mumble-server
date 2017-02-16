@@ -20,13 +20,17 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry,
 built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull bddenhartog/docker-murmur:2.3.0
+docker pull bddenhartog/docker-murmur
 ```
 
 You don't _need_ to specify a version number, but it's a good idea to so that
 you don't pull `latest` and risk getting different versions on different hosts.
 You can view the available versions by looking at the [Releases][releases]
 page.
+
+The examples throughout this document assume we are not using a tag. If you
+include a tag number when pulling the image, you will need to append that tag
+number when running the image via `docker run`.
 
 ### Create a container
 
