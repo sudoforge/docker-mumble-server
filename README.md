@@ -1,13 +1,19 @@
-# docker-murmur [![badges-travis-ci]][travis-ci] [![badges-license]][repo-license]
+# alpine-murmur [![badges-travis-ci]][travis-ci] [![badges-license]][repo-license]
 
 ![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
+
+> Deprecated image statistics (`bddenhartog/docker-murmur`):
+>
+> ![dep-badges-docker-pulls] ![dep-badges-docker-stars]
+>
+> See [this issue](#63) for more information.
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the server that Mumble
 clients to connect to. [Learn More][vendor-mumble].
 
-`docker-murmur` enables you to easily run multiple (lightweight) murmur
+`alpine-murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
 ## Getting started
@@ -20,7 +26,7 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry,
 built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull bddenhartog/docker-murmur
+docker pull bddenhartog/alpine-murmur
 ```
 
 You don't _need_ to specify a version number, but it's a good idea to so that
@@ -40,7 +46,7 @@ Now that you have the image pulled, it's time to get a container up and running.
 docker run -d \
     -p 64738:64738 \
     --name murmur-001 \
-    bddenhartog/docker-murmur
+    bddenhartog/alpine-murmur
 ```
 
 You should now be able to open up the Mumble client, and connect to the server
@@ -58,7 +64,7 @@ docker run -d \
     -p 64738:64738 \
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
     --name murmur-001 \
-    bddenhartog/docker-murmur
+    bddenhartog/alpine-murmur
 ```
 
 Here is a list of all options supported through environment variables:
@@ -150,7 +156,7 @@ $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
 
 ## Updating
 
-To update your image locally, simply run `docker pull bddenhartog/docker-murmur`.
+To update your image locally, simply run `docker pull bddenhartog/alpine-murmur`.
 
 ## License
 
@@ -162,8 +168,10 @@ Licensed under MIT. [View License][repo-license].
 
 [badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
 [badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
+[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/alpine-murmur.svg "Docker Pulls"
+[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/alpine-murmur.svg "Docker Stars"
+[dep-badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
+[dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
 [badges-license]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000 "MIT License"
 [badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur
@@ -173,7 +181,7 @@ Licensed under MIT. [View License][repo-license].
 [repo-license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
-[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/docker-murmur/ "View on DockerHub"
+[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/alpine-murmur/ "View on DockerHub"
 [mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
 [mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
 [mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime
