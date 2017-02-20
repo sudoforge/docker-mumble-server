@@ -6,7 +6,7 @@
 >
 > ![dep-badges-docker-pulls] ![dep-badges-docker-stars]
 >
-> See [this issue](#63) for more information.
+> See [this issue][repo-deprecation-issue] for more information.
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
@@ -166,6 +166,7 @@ Licensed under MIT. [View License][repo-license].
 
 ![badges-analytics]
 
+[repo-deprecation-issue]: https://github.com/bddenhartog/docker-murmur/issues/63 "Deprecation Notice"
 [badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
 [badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
 [badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/alpine-murmur.svg "Docker Pulls"
