@@ -6,7 +6,7 @@ ICEFILE="/etc/murmur/ice.ini"
 WELCOMEFILE="/data/welcome.txt"
 
 setVal() {
-    if [ ${1} ] && [ ${2} ]; then
+    if [ ${1} ] && [ "${2}" ]; then
         echo "update setting: ${1} with: ${2}"
         sed -i -E 's;#?('"${1}"'=).*;\1'"${2}"';' "${CONFIGFILE}"
     fi
