@@ -24,6 +24,9 @@ RUN apk --no-cache add \
         tar -x -C /opt -f - \
     && mv /opt/murmur* /opt/murmur \
     && chmod 700 /usr/bin/docker-murmur
+    
+ENV REFRESHED_AT 2017-01-11
+RUN apk upgrade --no-cache
 
 # Exposed port should always match what is set in /murmur/murmur.ini
 EXPOSE 64738/tcp 64738/udp
