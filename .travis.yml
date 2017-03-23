@@ -4,8 +4,8 @@ services:
     - docker
 
 before_install:
-    - docker build -t bddenhartog/murmur:local images/murmur
-    - docker run -d -p 64738:64738 bddenhartog/murmur:local
+    - docker build -t containerly/murmur:local library/murmur
+    - docker run -d -p 64738:64738 containerly/murmur:local
 
 script:
-  - docker ps | grep bddenhartog/murmur:local
+  - docker ps | grep containerly/murmur:local
