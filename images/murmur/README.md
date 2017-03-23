@@ -166,23 +166,23 @@ Licensed under MIT. [View License][repo-license].
 
 ![badges-analytics]
 
-[repo-deprecation-issue]: https://github.com/bddenhartog/docker-murmur/issues/63 "Deprecation Notice"
+[repo-deprecation-issue]: https://github.com/bddenhartog/docker-images/issues/63 "Deprecation Notice"
 [badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
 [badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/alpine-murmur.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/alpine-murmur.svg "Docker Stars"
+[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/murmur.svg "Docker Pulls"
+[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/murmur.svg "Docker Stars"
 [dep-badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
 [dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
 [badges-license]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000 "MIT License"
-[badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master "Build Status"
-[travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur
+[badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-images.svg?branch=master "Build Status"
+[travis-ci]: https://travis-ci.org/bddenhartog/docker-images
 [badges-analytics]: https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat "Analytics"
-[repo-url]: https://www.github.com/bddenhartog/docker-murmur
-[releases]: https://www.github.com/bddenhartog/docker-murmur/releases
-[repo-license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
+[repo-url]: https://www.github.com/bddenhartog/docker-images
+[releases]: https://www.github.com/bddenhartog/docker-images/releases
+[repo-license]: https://github.com/bddenhartog/docker-images/blob/master/LICENSE.md "View License"
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
-[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/alpine-murmur/ "View on DockerHub"
+[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/murmur/ "View on DockerHub"
 [mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
 [mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
 [mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime
