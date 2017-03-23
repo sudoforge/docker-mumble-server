@@ -26,13 +26,12 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry,
 built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull bddenhartog/alpine-murmur
+docker pull containerly/murmur:1.2.19
 ```
 
-You don't _need_ to specify a version number, but it's a good idea to so that
-you don't pull `latest` and risk getting different versions on different hosts.
-You can view the available versions by looking at the [Releases][releases]
-page.
+You don't _need_ to specify a tag, but it's a good idea to so that you don't
+pull `latest` and risk getting different versions on different hosts. Versions
+are kept in line with the [releases from mumble-voip/mumble][vendor-releases].
 
 The examples throughout this document assume we are not using a tag. If you
 include a tag number when pulling the image, you will need to append that tag
@@ -46,7 +45,7 @@ Now that you have the image pulled, it's time to get a container up and running.
 docker run -d \
     -p 64738:64738 \
     --name murmur-001 \
-    bddenhartog/alpine-murmur
+    containerly/murmur
 ```
 
 You should now be able to open up the Mumble client, and connect to the server
@@ -64,7 +63,7 @@ docker run -d \
     -p 64738:64738 \
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
     --name murmur-001 \
-    bddenhartog/alpine-murmur
+    containerly/murmur
 ```
 
 Here is a list of all options supported through environment variables:
@@ -156,33 +155,29 @@ $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
 
 ## Updating
 
-To update your image locally, simply run `docker pull bddenhartog/alpine-murmur`.
-
-## License
-
-Licensed under MIT. [View License][repo-license].
+To update your image locally, simply run `docker pull containerly/murmur`.
 
 ---
 
 ![badges-analytics]
 
-[repo-deprecation-issue]: https://github.com/bddenhartog/docker-images/issues/63 "Deprecation Notice"
+[repo-deprecation-issue]: https://github.com/containerly/docker-library/issues/63 "Deprecation Notice"
 [badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
 [badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/murmur.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/murmur.svg "Docker Stars"
+[badges-docker-pulls]: https://img.shields.io/docker/pulls/containerly/murmur.svg "Docker Pulls"
+[badges-docker-stars]: https://img.shields.io/docker/stars/containerly/murmur.svg "Docker Stars"
 [dep-badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
 [dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
 [badges-license]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000 "MIT License"
-[badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-images.svg?branch=master "Build Status"
-[travis-ci]: https://travis-ci.org/bddenhartog/docker-images
+[badges-travis-ci]: https://travis-ci.org/containerly/docker-library.svg?branch=master "Build Status"
+[travis-ci]: https://travis-ci.org/containerly/docker-library
 [badges-analytics]: https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat "Analytics"
-[repo-url]: https://www.github.com/bddenhartog/docker-images
-[releases]: https://www.github.com/bddenhartog/docker-images/releases
-[repo-license]: https://github.com/bddenhartog/docker-images/blob/master/LICENSE.md "View License"
+[repo-url]: https://www.github.com/containerly/docker-library
+[releases]: https://www.github.com/containerly/docker-library/releases
+[vendor-releases]: https://www.github.com/mumble-voip/mumble/releases
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
-[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/murmur/ "View on DockerHub"
+[docker-hub-repo-url]: https://hub.docker.com/r/containerly/murmur/ "View on DockerHub"
 [mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
 [mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
 [mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime
