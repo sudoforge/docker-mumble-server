@@ -1,4 +1,4 @@
-# alpine-murmur [![badges-travis-ci]][travis-ci] [![badges-license]][repo-license]
+# alpine-murmur [![badges-travis-ci]][travis-ci]
 
 ![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
 
@@ -168,7 +168,6 @@ To update your image locally, simply run `docker pull containerly/murmur`.
 [badges-docker-stars]: https://img.shields.io/docker/stars/containerly/murmur.svg "Docker Stars"
 [dep-badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
 [dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
-[badges-license]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000 "MIT License"
 [badges-travis-ci]: https://travis-ci.org/containerly/docker-library.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/containerly/docker-library
 [badges-analytics]: https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat "Analytics"
