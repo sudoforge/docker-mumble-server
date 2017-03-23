@@ -16,5 +16,5 @@ Found a bug, or want to suggest a new feature? Please [create an issue][core-iss
 Licensed under MIT.
 
 [core-issues]: https://github.com/containerly/docker-library/issues
-[murmur-readme]: https://github.com/containerly/docker-library/library/murmur/README.md
+[murmur-lib]: https://github.com/containerly/docker-library/tree/master/library/murmur
 [murmur-hub]: https://hub.docker.com/r/containerly/murmur
