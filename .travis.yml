@@ -4,8 +4,10 @@ services:
     - docker
 
 before_install:
-    - docker build -t containerly/murmur:local library/murmur
-    - docker run -d -p 64738:64738 containerly/murmur:local
+    - docker build -t containerly/murmur:travis library/murmur
+    - docker run -d -p 64738:64738 containerly/murmur:travis
+    - docker build -t containerly/createrepo:travis library/createrepo
 
 script:
-  - docker ps | grep containerly/murmur:local
+  - docker ps | grep containerly/murmur:travis
+  - docker run -it --rm containerly/createrepo:travis --version
