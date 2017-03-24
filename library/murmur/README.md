@@ -1,4 +1,4 @@
-# alpine-murmur [![badges-travis-ci]][travis-ci]
+# containerly/murmur [![badges-travis-ci]][travis-ci]
 
 ![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
 
@@ -13,7 +13,7 @@ the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the server that Mumble
 clients to connect to. [Learn More][vendor-mumble].
 
-`alpine-murmur` enables you to easily run multiple (lightweight) murmur
+`containerly/murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
 ## Getting started
@@ -33,9 +33,9 @@ You don't _need_ to specify a tag, but it's a good idea to so that you don't
 pull `latest` and risk getting different versions on different hosts. Versions
 are kept in line with the [releases from mumble-voip/mumble][vendor-releases].
 
-The examples throughout this document assume we are not using a tag. If you
-include a tag number when pulling the image, you will need to append that tag
-number when running the image via `docker run`.
+The examples throughout this document assume we are not using a tag for the
+sake of brevity. If you pull the image with a tag other than `latest`, you 
+will need to use that tag number when running the image via `docker run`.
 
 ### Create a container
 
