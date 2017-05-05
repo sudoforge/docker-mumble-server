@@ -170,7 +170,7 @@ To update your image locally, simply run `docker pull containerly/murmur`.
 [dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/containerly/docker-library.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/containerly/docker-library
-[badges-analytics]: https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat "Analytics"
+[badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
 [repo-url]: https://www.github.com/containerly/docker-library
 [releases]: https://www.github.com/containerly/docker-library/releases
 [vendor-releases]: https://www.github.com/mumble-voip/mumble/releases
