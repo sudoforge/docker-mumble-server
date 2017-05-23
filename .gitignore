@@ -1,8 +1,2 @@
-## Operating system files
-**/.DS_Store
-
-## Common files/directories
-*~
-
 ## Project-level ignore list
 data/
