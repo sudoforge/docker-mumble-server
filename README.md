@@ -21,7 +21,7 @@ An image is available from the [Docker Hub](https://hub.docker.com/r/sheogorath/
 built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull bddenhartog/alpine-murmur
+docker pull sheogorath/murmur-docker
 ```
 
 You don't _need_ to specify a version number, but it's a good idea to so that
@@ -41,7 +41,7 @@ Now that you have the image pulled, it's time to get a container up and running.
 docker run -d \
     -p 64738:64738 \
     --name murmur-001 \
-    bddenhartog/alpine-murmur
+    sheogorath/murmur-docker
 ```
 
 You should now be able to open up the Mumble client, and connect to the server
@@ -59,7 +59,7 @@ docker run -d \
     -p 64738:64738 \
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
     --name murmur-001 \
-    bddenhartog/alpine-murmur
+    sheogorath/murmur-docker
 ```
 
 Here is a list of all options supported through environment variables:
@@ -151,7 +151,7 @@ $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
 
 ## Updating
 
-To update your image locally, simply run `docker pull bddenhartog/alpine-murmur`.
+To update your image locally, simply run `docker pull sheogorath/murmur-docker`.
 
 ## License
 
@@ -159,12 +159,10 @@ Licensed under MIT. [View License][repo-license].
 
 ---
 
-[badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/SISheogorath/murmur-docker
 [repo-license]: https://github.com/SISheogorath/murmur-docker/blob/master/LICENSE.md "View License"
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
-[docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/alpine-murmur/ "View on DockerHub"
 
 
 
