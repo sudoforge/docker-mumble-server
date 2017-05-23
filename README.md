@@ -1,28 +1,23 @@
-# alpine-murmur [![badges-travis-ci]][travis-ci] [![badges-license]][repo-license]
+Murmur
+===
 
-![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
-
-> Deprecated image statistics (`bddenhartog/docker-murmur`):
->
-> ![dep-badges-docker-pulls] ![dep-badges-docker-stars]
->
-> See [this issue][repo-deprecation-issue] for more information.
+[![Build Status](https://travis-ci.org/SISheogorath/murmur-docker.svg?branch=master)](https://travis-ci.org/SISheogorath/murmur-docker)
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the server that Mumble
-clients to connect to. [Learn More][vendor-mumble].
+clients to connect to. [Learn More](https://wiki.mumble.info/).
 
 `alpine-murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
 ## Getting started
 
-This guide assumes that you already have [Docker][docker-install-docs] installed.
+This guide assumes that you already have [Docker](https://www.docker.com/get-docker) installed.
 
 ### Pull the official image
 
-An image is available from the [Docker Hub][docker-hub-repo-url] registry,
+An image is available from the [Docker Hub](https://hub.docker.com/r/sheogorath/murmur-docker/) registry,
 built automatically from this repository. It's easy to get started:
 
 ```text
@@ -31,7 +26,7 @@ docker pull bddenhartog/alpine-murmur
 
 You don't _need_ to specify a version number, but it's a good idea to so that
 you don't pull `latest` and risk getting different versions on different hosts.
-You can view the available versions by looking at the [Releases][releases]
+You can view the available versions by looking at the [Releases](https://hub.docker.com/r/sheogorath/murmur-docker/tags/)
 page.
 
 The examples throughout this document assume we are not using a tag. If you
@@ -55,7 +50,7 @@ running at `127.0.0.1:64738`.
 ### Configuration options
 
 The following variables can be passed into the container (when you execute
-`docker run`) to change various confirguation options.
+`docker run`) to change various confirguration options.
 
 For example:
 
@@ -164,25 +159,16 @@ Licensed under MIT. [View License][repo-license].
 
 ---
 
-![badges-analytics]
-
-[repo-deprecation-issue]: https://github.com/bddenhartog/docker-murmur/issues/63 "Deprecation Notice"
-[badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
-[badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/alpine-murmur.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/alpine-murmur.svg "Docker Stars"
-[dep-badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
-[dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
-[badges-license]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000 "MIT License"
 [badges-travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur.svg?branch=master "Build Status"
-[travis-ci]: https://travis-ci.org/bddenhartog/docker-murmur
-[badges-analytics]: https://ga-beacon.appspot.com/UA-85446052-1/github-landing-page?flat "Analytics"
-[repo-url]: https://www.github.com/bddenhartog/docker-murmur
-[releases]: https://www.github.com/bddenhartog/docker-murmur/releases
-[repo-license]: https://github.com/bddenhartog/docker-murmur/blob/master/LICENSE.md "View License"
+[travis-ci]: https://travis-ci.org/SISheogorath/murmur-docker
+[repo-license]: https://github.com/SISheogorath/murmur-docker/blob/master/LICENSE.md "View License"
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
 [docker-hub-repo-url]: https://hub.docker.com/r/bddenhartog/alpine-murmur/ "View on DockerHub"
+
+
+
+
 [mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
 [mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
 [mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime
