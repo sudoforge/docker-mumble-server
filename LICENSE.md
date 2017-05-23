@@ -1,5 +1,6 @@
 The MIT License (MIT)
 
+Copyright (c) 2016 Christoph (Sheogorath) Kern
 Copyright (c) 2016 Benjamin Den Hartog
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
