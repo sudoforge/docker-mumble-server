@@ -27,7 +27,7 @@ command_exists wget
 command_exists jq
 
 if version_ge "$MURMUR_VERSION" "$(github_latest_release "mumble-voip/mumble")"; then
-    echo "InspIRCd version ($MURMUR_VERSION) is up to date! Test successful."
+    echo "Murmur version ($MURMUR_VERSION) is up to date! Test successful."
 else
     echo >&2 "A newer base image is available! Please update. New version is $(github_latest_release "mumble-voip/mumble")"
     exit 1
