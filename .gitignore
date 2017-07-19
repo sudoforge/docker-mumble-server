@@ -3,6 +3,7 @@
 
 ## Common files/directories
 *~
+*.swp
 
 ## Project-level ignore list
 library/murmur/data
