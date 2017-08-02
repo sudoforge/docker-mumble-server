@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:latest
 MAINTAINER Containerly <https://github.com/containerly>
 
 RUN dnf makecache && \

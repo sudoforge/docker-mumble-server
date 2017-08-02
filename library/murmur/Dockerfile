@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:latest
 
 # Set environment variables
 ENV MURMUR_VERSION=1.2.19
