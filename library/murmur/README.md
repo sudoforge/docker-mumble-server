@@ -2,12 +2,6 @@
 
 ![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
 
-> Deprecated image statistics (`bddenhartog/docker-murmur`):
->
-> ![dep-badges-docker-pulls] ![dep-badges-docker-stars]
->
-> See [this issue][repo-deprecation-issue] for more information.
-
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the server that Mumble
@@ -162,12 +156,10 @@ To update your image locally, simply run `docker pull containerly/murmur`.
 ![badges-analytics]
 
 [repo-deprecation-issue]: https://github.com/containerly/docker-library/issues/63 "Deprecation Notice"
-[badges-alpine]: https://img.shields.io/badge/alpine-3.5-green.svg?maxAge=2592000 "Alpine v3.5"
+[badges-alpine]: https://img.shields.io/badge/alpine:latest-green.svg?maxAge=2592000 "Alpine Linux"
 [badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
 [badges-docker-pulls]: https://img.shields.io/docker/pulls/containerly/murmur.svg "Docker Pulls"
 [badges-docker-stars]: https://img.shields.io/docker/stars/containerly/murmur.svg "Docker Stars"
-[dep-badges-docker-pulls]: https://img.shields.io/docker/pulls/bddenhartog/docker-murmur.svg "Docker Pulls"
-[dep-badges-docker-stars]: https://img.shields.io/docker/stars/bddenhartog/docker-murmur.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/containerly/docker-library.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/containerly/docker-library
 [badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
