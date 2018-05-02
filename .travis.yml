@@ -9,5 +9,5 @@ before_install:
     - docker build -t local/createrepo createrepo
 
 script:
-  - docker ps -f "ancestor=local/murmur" -f "status=running" -f "publish=61132" -q | grep -E '*'
-  - docker run -it --rm containerly/createrepo:travis --version
+  - docker ps -f "ancestor=local/murmur" -f "status=running" -f "publish=64738" -q | grep -E '*'
+  - docker run -it --rm local/createrepo --version
