@@ -1,4 +1,4 @@
-# containerly/murmur [![badges-travis-ci]][travis-ci]
+# sudoforge/murmur [![badges-travis-ci]][travis-ci]
 
 ![badges-alpine] ![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
 
@@ -7,7 +7,7 @@ the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the server that Mumble
 clients to connect to. [Learn More][vendor-mumble].
 
-`containerly/murmur` enables you to easily run multiple (lightweight) murmur
+`sudoforge/murmur` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
 
 ## Getting started
@@ -20,7 +20,7 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry,
 built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull containerly/murmur:1.2.19
+docker pull sudoforge/murmur:1.2.19
 ```
 
 You don't _need_ to specify a tag, but it's a good idea to so that you don't
@@ -39,7 +39,7 @@ Now that you have the image pulled, it's time to get a container up and running.
 docker run -d \
     -p 64738:64738 \
     --name murmur-001 \
-    containerly/murmur
+    sudoforge/murmur
 ```
 
 You should now be able to open up the Mumble client, and connect to the server
@@ -57,7 +57,7 @@ docker run -d \
     -p 64738:64738 \
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
     --name murmur-001 \
-    containerly/murmur
+    sudoforge/murmur
 ```
 
 Here is a list of all options supported through environment variables:
@@ -149,26 +149,26 @@ $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
 
 ## Updating
 
-To update your image locally, simply run `docker pull containerly/murmur`.
+To update your image locally, simply run `docker pull sudoforge/murmur`.
 
 ---
 
 ![badges-analytics]
 
-[repo-deprecation-issue]: https://github.com/containerly/docker-library/issues/63 "Deprecation Notice"
+[repo-deprecation-issue]: https://github.com/sudoforge/docker-images/issues/63 "Deprecation Notice"
 [badges-alpine]: https://img.shields.io/badge/alpine:latest-green.svg?maxAge=2592000 "Alpine Linux"
 [badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/containerly/murmur.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/containerly/murmur.svg "Docker Stars"
-[badges-travis-ci]: https://travis-ci.org/containerly/docker-library.svg?branch=master "Build Status"
-[travis-ci]: https://travis-ci.org/containerly/docker-library
+[badges-docker-pulls]: https://img.shields.io/docker/pulls/sudoforge/murmur.svg "Docker Pulls"
+[badges-docker-stars]: https://img.shields.io/docker/stars/sudoforge/murmur.svg "Docker Stars"
+[badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
+[travis-ci]: https://travis-ci.org/sudoforge/docker-images
 [badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
-[repo-url]: https://www.github.com/containerly/docker-library
-[releases]: https://www.github.com/containerly/docker-library/releases
+[repo-url]: https://www.github.com/sudoforge/docker-images
+[releases]: https://www.github.com/sudoforge/docker-images/releases
 [vendor-releases]: https://www.github.com/mumble-voip/mumble/releases
 [vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
-[docker-hub-repo-url]: https://hub.docker.com/r/containerly/murmur/ "View on DockerHub"
+[docker-hub-repo-url]: https://hub.docker.com/r/sudoforge/murmur/ "View on DockerHub"
 [mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
 [mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
 [mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime

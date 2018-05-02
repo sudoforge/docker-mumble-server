@@ -1,5 +1,5 @@
 FROM fedora:latest
-MAINTAINER Containerly <https://github.com/containerly>
+MAINTAINER https://github.com/sudoforge
 
 RUN dnf makecache && \
     dnf upgrade -y && \
