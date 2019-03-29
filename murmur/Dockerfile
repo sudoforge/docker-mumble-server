@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Set environment variables
-ENV MURMUR_VERSION=1.2.19
+ENV MURMUR_VERSION=1.3.0-rc1
 
 # Copy project files into container
 COPY ./config /etc/murmur
