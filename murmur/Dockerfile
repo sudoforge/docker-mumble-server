@@ -11,7 +11,7 @@ RUN apk --no-cache add \
         pwgen \
         libressl \
     && adduser -SDH murmur \
-    && mkdir \
+    && mkdir -p \
         /data \
         /opt \
         /var/run/murmur \
