@@ -34,4 +34,4 @@ WORKDIR /etc/murmur
 VOLUME ["/data/"]
 
 # Configure runtime container and start murmur
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
