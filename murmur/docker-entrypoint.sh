@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-set -e
 
 CONFIGFILE="/etc/murmur/murmur.ini"
 ICEFILE="/etc/murmur/ice.ini"
@@ -78,7 +77,7 @@ if [ -f ${WELCOMEFILE} ]; then
     echo -n "${parsedContent}\"" >> "${CONFIGFILE}"
 fi
 
-if ! cat "${CONFIGFILE}" | grep '\[Ice\]' > /dev/null 2>&1; then
+if ! grep '\[Ice\]' "${CONFIGFILE}" > /dev/null 2>&1; then
     echo "" >> "${CONFIGFILE}"
     cat "${ICEFILE}" >> "${CONFIGFILE}"
 fi
