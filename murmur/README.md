@@ -159,8 +159,8 @@ To update your image locally, simply run `docker pull sudoforge/murmur`.
 ![badges-analytics]
 
 [badges-murmur]: https://img.shields.io/badge/murmur-1.3.0-green.svg?maxAge=2592000 "Murmur v1.3.0"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/sudoforge/murmur.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/sudoforge/murmur.svg "Docker Stars"
+[badges-docker-pulls]: https://img.shields.io/docker/pulls/sudoforge/murmurd.svg "Docker Pulls"
+[badges-docker-stars]: https://img.shields.io/docker/stars/sudoforge/murmurd.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/sudoforge/docker-images
 [badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
