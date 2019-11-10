@@ -12,12 +12,13 @@ instances on the same host.
 
 ## Getting started
 
-This guide assumes that you already have [Docker][docker-install-docs] installed.
+This guide assumes that you already have [Docker][docker-install-docs]
+installed.
 
 ### Pull the official image
 
-An image is available from the [Docker Hub][docker-hub-repo-url] registry,
-built automatically from this repository. It's easy to get started:
+An image is available from the [Docker Hub][docker-hub-repo-url] registry, built
+automatically from this repository. It's easy to get started:
 
 ```text
 docker pull sudoforge/murmur:1.3.0
@@ -27,9 +28,9 @@ You don't _need_ to specify a tag, but it's a good idea to so that you don't
 pull `latest` and risk getting different versions on different hosts. Versions
 are kept in line with the [releases from mumble-voip/mumble][vendor-releases].
 
-The examples throughout this document assume we are not using a tag for the
-sake of brevity. If you pull the image with a tag other than `latest`, you 
-will need to use that tag number when running the image via `docker run`.
+The examples throughout this document assume we are not using a tag for the sake
+of brevity. If you pull the image with a tag other than `latest`, you will need
+to use that tag number when running the image via `docker run`.
 
 ### Create a container
 
@@ -111,9 +112,9 @@ correctly.
 
 ### SSL Certificates ([Murmur.ini::SSL][mdoc-sslcertkey])
 
-Murmur will generate its own SSL certificates when the daemon is started.
-If you wish to provide your own certificates and ciphers instead, you can do
-so by following the instructions below.
+Murmur will generate its own SSL certificates when the daemon is started. If you
+wish to provide your own certificates and ciphers instead, you can do so by
+following the instructions below.
 
 If `MUMBLE_ENABLESSL` is set to `1`, custom SSL is enabled, as long as you have
 mounted a certificate and key at the following locations:
@@ -128,8 +129,8 @@ mounted a certificate and key at the following locations:
 - SSL key should be mounted at `/data/key.pem`
 
   - If the key has a passphrase, you should define the environment variable
-    `MUMBLE_SSLPASSPHRASE` with the passphrase. This variable does not have
-    any effect if you have not mounted a key *and* enabled SSL.
+    `MUMBLE_SSLPASSPHRASE` with the passphrase. This variable does not have any
+    effect if you have not mounted a key *and* enabled SSL.
 
 - Set your preferred cipher suite using `MUMBLE_SSLCIPHERS`
 
@@ -141,8 +142,8 @@ mounted a certificate and key at the following locations:
 If the environment variable `SUPERUSER_PASSWORD` is not defined when creating
 the container, a password will be automatically generated. To view the password
 for any container at any time, look at the container's logs. As an example, to
-view the SuperUser password is for an instance running in a container
-named `murmur-001`:
+view the SuperUser password is for an instance running in a container named
+`murmur-001`:
 
 ```text
 $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
