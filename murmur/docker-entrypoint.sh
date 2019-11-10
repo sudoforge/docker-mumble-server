@@ -85,7 +85,7 @@ fi
 
 chown -R murmur:nobody /data/
 
-if [[ ! -f /data/murmur.sqlite ]]; then
+if [ ! -f /data/murmur.sqlite ]; then
     if [ -z ${SUPERUSER_PASSWORD+x} ]; then
         SUPERUSER_PASSWORD=`pwgen -cns1 36`
     fi
@@ -95,6 +95,6 @@ if [[ ! -f /data/murmur.sqlite ]]; then
 fi
 
 # Run murmur if not in debug mode
-if [ -z ${DEBUG_MODE} ] || [ ! ${DEBUG_MODE} -eq 1 ]; then
+if [ -z "$DEBUG" ] || [ ! "$DEBUG" -eq 1 ]; then
     /opt/murmur/murmur.x86 -fg -ini "${CONFIGFILE}"
 fi
