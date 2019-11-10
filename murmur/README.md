@@ -160,7 +160,7 @@ To update your image locally, simply run `docker pull sudoforge/murmur`.
 
 [repo-deprecation-issue]: https://github.com/sudoforge/docker-images/issues/63 "Deprecation Notice"
 [badges-alpine]: https://img.shields.io/badge/alpine:latest-green.svg?maxAge=2592000 "Alpine Linux"
-[badges-murmur]: https://img.shields.io/badge/murmur-1.2.19-green.svg?maxAge=2592000 "Murmur v1.2.19"
+[badges-murmur]: https://img.shields.io/badge/murmur-1.3.0-green.svg?maxAge=2592000 "Murmur v1.3.0"
 [badges-docker-pulls]: https://img.shields.io/docker/pulls/sudoforge/murmur.svg "Docker Pulls"
 [badges-docker-stars]: https://img.shields.io/docker/stars/sudoforge/murmur.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
