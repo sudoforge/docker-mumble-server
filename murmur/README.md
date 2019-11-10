@@ -20,7 +20,7 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry,
 built automatically from this repository. It's easy to get started:
 
 ```text
-docker pull sudoforge/murmur:1.2.19
+docker pull sudoforge/murmur:1.3.0
 ```
 
 You don't _need_ to specify a tag, but it's a good idea to so that you don't
@@ -37,7 +37,8 @@ Now that you have the image pulled, it's time to get a container up and running.
 
 ```text
 docker run -d \
-    -p 64738:64738 \
+    -p 64738:64738/tcp \
+    -p 64738:64738/udp \
     --name murmur-001 \
     sudoforge/murmur
 ```
@@ -48,13 +49,14 @@ running at `127.0.0.1:64738`.
 ### Configuration options
 
 The following variables can be passed into the container (when you execute
-`docker run`) to change various confirguation options.
+`docker run`) to change various configuration options.
 
 For example:
 
 ```text
 docker run -d \
-    -p 64738:64738 \
+    -p 64738:64738/tcp \
+    -p 64738:64738/udp
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
     --name murmur-001 \
     sudoforge/murmur
@@ -102,10 +104,10 @@ Here is a list of all options supported through environment variables:
 
 ### Custom welcome text ([Murmur.ini::welcometext][mdoc-welcometext])
 
-To customize the welcome text, add the contents to `welcome.txt` and mount that
-into the container at `/data/welcome.txt`. Double quote characters (`"`) are
-escaped automatically, but you may want to double check that your message was
-parsed correctly.
+To customize the welcome text, add the contents to `welcometext` and mount that
+into the container at `/data/welcometext`. Double quote characters (`"`) are
+escaped automatically, but you may want to confirm that your message was parsed
+correctly.
 
 ### SSL Certificates ([Murmur.ini::SSL][mdoc-sslcertkey])
 

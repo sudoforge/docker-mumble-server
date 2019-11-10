@@ -3,7 +3,7 @@ set -e
 
 CONFIGFILE="/etc/murmur/murmur.ini"
 ICEFILE="/etc/murmur/ice.ini"
-WELCOMEFILE="/data/welcome.txt"
+WELCOMEFILE="/data/welcometext"
 
 setVal() {
     if [ ${1} ] && [ "${2}" ]; then

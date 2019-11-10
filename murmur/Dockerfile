@@ -1,7 +1,7 @@
-FROM alpine:latest
+FROM alpine@sha256:c19173c5ada610a5989151111163d28a67368362762534d8a8121ce95cf2bd5a
 
 # Set environment variables
-ENV MURMUR_VERSION=1.2.19
+ENV MURMUR_VERSION=1.3.0
 
 # Copy project files into container
 COPY ./config /etc/murmur
@@ -16,8 +16,9 @@ RUN apk --no-cache add \
         /opt \
         /var/run/murmur \
     && chown -R murmur:nobody \
-        /var/run/murmur \
+        /data \
         /etc/murmur \
+        /var/run/murmur \
     && wget \
         https://github.com/mumble-voip/mumble/releases/download/${MURMUR_VERSION}/murmur-static_x86-${MURMUR_VERSION}.tar.bz2 -O - |\
         bzcat -f |\
