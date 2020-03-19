@@ -47,10 +47,10 @@ setVal suggestPositional "${MUMBLE_SUGGESTPOSITIONAL}"
 setVal suggestPushToTalk "${MUMBLE_SUGGESTPUSHTOTALK}"
 
 if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
-    SSL_CERTFILE=/data/cert.pem
-    SSL_KEYFILE=/data/key.pem
-    SSL_CAFILE=/data/intermediate.pem
-    SSL_DHFILE=/data/dh.pem
+    SSL_CERTFILE=${MUMBLE_CERTFILE:-/data/cert.pem}
+    SSL_KEYFILE=${MUMBLE_KEYFILE:-/data/key.pem}
+    SSL_CAFILE=${MUMBLE_CAFILE:-/data/intermediate.pem}
+    SSL_DHFILE=${MUMBLE_DHFILE:-/data/dh.pem}
 
     if [ -f "${SSL_CERTFILE}" ]; then
         setVal sslCert "${SSL_CERTFILE}"
