@@ -73,9 +73,8 @@ if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
 fi
 
 if [ -f ${WELCOMEFILE} ]; then
-    setVal welcometext '"'
     parsedContent=$(cat "${WELCOMEFILE}" | sed -E 's/"/\\"/g')
-    echo -n "${parsedContent}\"" >> "${CONFIGFILE}"
+    setVal welcometext "\"$parsedContent\""
 fi
 
 if ! cat "${CONFIGFILE}" | grep '\[Ice\]' > /dev/null 2>&1; then
