@@ -47,10 +47,10 @@ setVal suggestPositional "${MUMBLE_SUGGESTPOSITIONAL}"
 setVal suggestPushToTalk "${MUMBLE_SUGGESTPUSHTOTALK}"
 
 if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
-    SSL_CERTFILE=/data/cert.pem
-    SSL_KEYFILE=/data/key.pem
-    SSL_CAFILE=/data/intermediate.pem
-    SSL_DHFILE=/data/dh.pem
+    SSL_CERTFILE=${MUMBLE_CERTFILE:-/data/cert.pem}
+    SSL_KEYFILE=${MUMBLE_KEYFILE:-/data/key.pem}
+    SSL_CAFILE=${MUMBLE_CAFILE:-/data/intermediate.pem}
+    SSL_DHFILE=${MUMBLE_DHFILE:-/data/dh.pem}
 
     if [ -f "${SSL_CERTFILE}" ]; then
         setVal sslCert "${SSL_CERTFILE}"
@@ -90,7 +90,15 @@ if [ ! -f /data/murmur.sqlite ]; then
     fi
 
     echo "SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
-    /opt/murmur/murmur.x86 -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD
+
+    # Using -supw currently throws a fatal error and exits the program. It has
+    # been fixed in the upstream project by commit d8203ba94 [1], after the
+    # current version (1.3.0). To bypass the issue and allow the entrypoint
+    # script to proceed, we are ignoring the erroneous exit code by executing
+    # `true` if the first invocation fails.
+    #
+    # [1]: https://github.com/mumble-voip/mumble/commit/d8203ba94d528b092e0ff5a52a51af28f8f592f1
+    /opt/murmur/murmur.x86 -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD || true
 fi
 
 # Run murmur if not in debug mode
