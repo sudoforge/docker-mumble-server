@@ -21,7 +21,7 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry, built
 automatically from this repository. It's easy to get started:
 
 ```text
-docker pull sudoforge/murmur:1.3.0
+docker pull sudoforge/murmurd[:tag]
 ```
 
 You don't _need_ to specify a tag, but it's a good idea to so that you don't
@@ -41,7 +41,7 @@ docker run -d \
     -p 64738:64738/tcp \
     -p 64738:64738/udp \
     --name murmur-001 \
-    sudoforge/murmur
+    sudoforge/murmurd[:tag]
 ```
 
 You should now be able to open up the Mumble client, and connect to the server
@@ -60,7 +60,7 @@ docker run -d \
     -p 64738:64738/udp
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
     --name murmur-001 \
-    sudoforge/murmur
+    sudoforge/murmurd[:tag]
 ```
 
 Here is a list of all options supported through environment variables:
@@ -150,9 +150,29 @@ $ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
 > SUPERUSER_PASSWORD: <value>
 ```
 
-## Updating
+## Tagging policy
 
-To update your image locally, simply run `docker pull sudoforge/murmur`.
+This project does not overwrite tags; they can (and should) be treated as
+immutable references, although you should still use image digests when deploying
+or extending this image.
+
+The `latest` tag follows the `master` branch of this repository and has
+equivalent layers to the latest numbered tag.
+
+### Numbered tags
+
+For a full list of tags, please see the [tags page][tags] on Docker Hub.
+
+Numbered tags follow the pattern:
+
+```
+<MUMBLE_VERSION>-<RELEASE>
+  │                └─ the release number specific to this repository
+  │
+  └──── the version of mumble for this release
+```
+
+
 
 ---
 
@@ -200,3 +220,4 @@ To update your image locally, simply run `docker pull sudoforge/murmur`.
 [mdoc-suggestPushToTalk]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPushToTalk
 [mdoc-sslcertkey]: https://wiki.mumble.info/wiki/Murmur.ini#sslCert_and_sslKey
 [mdoc-sslCiphers]: https://wiki.mumble.info/wiki/Murmur.ini#sslCiphers
+[tags]: https://hub.docker.com/r/sudoforge/murmurd/tags "sudoforge/murmurd tags"
