@@ -1,14 +1,29 @@
-# sudoforge/murmur [![badges-travis-ci]][travis-ci]
+# sudoforge/mumble-server [![badges-travis-ci]][travis-ci]
 
-![badges-murmur] ![badges-docker-pulls] ![badges-docker-stars]
+![badge/mumble-version] ![badge/pulls/mumble-server] ![badge/stars/mumble-server]
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
-communication to ensure user privacy. **Murmur** is the server that Mumble
-clients to connect to. [Learn More][vendor-mumble].
+communication to ensure user privacy. **Murmur** is the name of the server
+component within the Mumble project.[Learn More][mumble-wiki].
 
-`sudoforge/murmur` enables you to easily run multiple (lightweight) murmur
+`sudoforge/mumble-server` enables you to easily run multiple (lightweight) murmur
 instances on the same host.
+
+## Image name deprecation notice
+
+This image has been through a few renames to attempt to find the best fit for
+the community (see [`docker-images#96`][issues/96]). There are several images
+that are currently available, however, these are in the process of being
+deprecated and consolidated into `sudoforge/mumble-server`. During this
+deprecation period, all of the images will be kept in sync, and have the same
+tags available.
+
+| Image name                | Type         | Badges                                                    | Targeted Removal Date |
+| ------------------------- | ------------ | --------------------------------------------------------- | --------------------- |
+| `sudoforge/mumble-server` | **Primary**  | ![badge/pulls/mumble-server] ![badge/stars/mumble-server] | `---`                 |
+| `sudoforge/murmur`        | _Deprecated_ | ![badge/pulls/murmur] ![badge/stars/murmur]               | **`January 31 2021`** |
+| `sudoforge/murmurd`       | _Deprecated_ | ![badge/pulls/murmurd] ![badge/stars/murmurd]             | **`January 31 2021`** |
 
 ## Getting started
 
@@ -21,7 +36,7 @@ An image is available from the [Docker Hub][docker-hub-repo-url] registry, built
 automatically from this repository. It's easy to get started:
 
 ```text
-docker pull sudoforge/murmurd[:tag]
+docker pull sudoforge/mumble-server[:tag]
 ```
 
 You don't _need_ to specify a tag, but it's a good idea to so that you don't
@@ -40,8 +55,8 @@ Now that you have the image pulled, it's time to get a container up and running.
 docker run -d \
     -p 64738:64738/tcp \
     -p 64738:64738/udp \
-    --name murmur-001 \
-    sudoforge/murmurd[:tag]
+    --name mumble-server-001 \
+    sudoforge/mumble-server[:tag]
 ```
 
 You should now be able to open up the Mumble client, and connect to the server
@@ -59,8 +74,8 @@ docker run -d \
     -p 64738:64738/tcp \
     -p 64738:64738/udp
     -e MUMBLE_SERVERPASSWORD='superSecretPasswordHere' \
-    --name murmur-001 \
-    sudoforge/murmurd[:tag]
+    --name mumble-server-001 \
+    sudoforge/mumble-server[:tag]
 ```
 
 Here is a list of all options supported through environment variables:
@@ -112,8 +127,8 @@ correctly.
 
 ### SSL Certificates ([Murmur.ini::SSL][mdoc-sslcertkey])
 
-Murmur will generate its own SSL certificates when the daemon is started. If you
-wish to provide your own certificates and ciphers instead, you can do so by
+The server will generate its own SSL certificates when the daemon is started. If
+you wish to provide your own certificates and ciphers instead, you can do so by
 following the instructions below.
 
 If `MUMBLE_ENABLESSL` is set to `1`, custom SSL is enabled, as long as you have
@@ -143,10 +158,10 @@ If the environment variable `SUPERUSER_PASSWORD` is not defined when creating
 the container, a password will be automatically generated. To view the password
 for any container at any time, look at the container's logs. As an example, to
 view the SuperUser password is for an instance running in a container named
-`murmur-001`:
+`mumble-server-001`:
 
 ```text
-$ docker logs murmur-001 2>&1 | grep SUPERUSER_PASSWORD
+$ docker logs mumble-server-001 2>&1 | grep SUPERUSER_PASSWORD
 > SUPERUSER_PASSWORD: <value>
 ```
 
@@ -172,24 +187,26 @@ Numbered tags follow the pattern:
   └──── the version of mumble for this release
 ```
 
-
-
 ---
 
 ![badges-analytics]
 
-[badges-murmur]: https://img.shields.io/badge/murmur-1.3.0-green.svg?maxAge=2592000 "Murmur v1.3.0"
-[badges-docker-pulls]: https://img.shields.io/docker/pulls/sudoforge/murmurd.svg "Docker Pulls"
-[badges-docker-stars]: https://img.shields.io/docker/stars/sudoforge/murmurd.svg "Docker Stars"
+[badge/mumble-version]: https://img.shields.io/badge/mumble-1.3.0-green.svg?maxAge=2592000 "mumble v1.3.0"
+[badge/pulls/mumble-server]: https://img.shields.io/docker/pulls/sudoforge/mumble-server.svg "Docker Pulls"
+[badge/stars/mumble-server]: https://img.shields.io/docker/stars/sudoforge/mumble-server.svg "Docker Stars"
+[badge/pulls/murmur]: https://img.shields.io/docker/pulls/sudoforge/murmur.svg "Docker Pulls"
+[badge/stars/murmur]: https://img.shields.io/docker/stars/sudoforge/murmur.svg "Docker Stars"
+[badge/pulls/murmurd]: https://img.shields.io/docker/pulls/sudoforge/murmurd.svg "Docker Pulls"
+[badge/stars/murmurd]: https://img.shields.io/docker/stars/sudoforge/murmurd.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/sudoforge/docker-images
 [badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
 [repo-url]: https://www.github.com/sudoforge/docker-images
 [releases]: https://www.github.com/sudoforge/docker-images/releases
 [vendor-releases]: https://www.github.com/mumble-voip/mumble/releases
-[vendor-mumble]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
+[mumble-wiki]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
-[docker-hub-repo-url]: https://hub.docker.com/r/sudoforge/murmur/ "View on DockerHub"
+[docker-hub-repo-url]: https://hub.docker.com/r/sudoforge/mumble-server/ "View on DockerHub"
 [mdoc-ice]: https://wiki.mumble.info/wiki/Murmur.ini#ice
 [mdoc-group-icesecret]: https://wiki.mumble.info/wiki/Murmur.ini#icesecretread_and_icesecretwrite
 [mdoc-group-autoban]: https://wiki.mumble.info/wiki/Murmur.ini#autobanAttempts.2C_autobanTimeframe_and_autobanTime
@@ -220,4 +237,5 @@ Numbered tags follow the pattern:
 [mdoc-suggestPushToTalk]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPushToTalk
 [mdoc-sslcertkey]: https://wiki.mumble.info/wiki/Murmur.ini#sslCert_and_sslKey
 [mdoc-sslCiphers]: https://wiki.mumble.info/wiki/Murmur.ini#sslCiphers
-[tags]: https://hub.docker.com/r/sudoforge/murmurd/tags "sudoforge/murmurd tags"
+[issues/96]: https://github.com/sudoforge/docker-images/issues/96
+[tags]: https://hub.docker.com/r/sudoforge/mumble-server/tags "image tags"

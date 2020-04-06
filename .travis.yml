@@ -4,10 +4,10 @@ services:
     - docker
 
 before_install:
-    - docker build -t local/murmur murmur
-    - docker run -d -p 61132:64738 local/murmur
+    - docker build -t local/mumble-server mumble-server
+    - docker run -d -p 61132:64738 local/mumble-server
     - docker build -t local/createrepo createrepo
 
 script:
-  - docker ps -f "ancestor=local/murmur" -f "status=running" -f "publish=64738" -q | grep -E '*'
+  - docker ps -f "ancestor=local/mumble-server" -f "status=running" -f "publish=64738" -q | grep -E '*'
   - docker run -it --rm local/createrepo --version
