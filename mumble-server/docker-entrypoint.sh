@@ -103,5 +103,5 @@ fi
 
 # Run murmur if not in debug mode
 if [ -z "$DEBUG" ] || [ ! "$DEBUG" -eq 1 ]; then
-    /opt/murmur/murmur.x86 -fg -ini "${CONFIGFILE}"
+    exec /opt/murmur/murmur.x86 -fg -ini "${CONFIGFILE}"
 fi
