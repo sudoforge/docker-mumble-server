@@ -6,7 +6,7 @@ ICEFILE="/etc/murmur/ice.ini"
 WELCOMEFILE="/data/welcometext"
 
 setVal() {
-    if [ "${1}" ] && [ "${2}" ]; then
+    if [ -n "${1}" ] && [ -n "${2}" ]; then
         echo "update setting: ${1} with: ${2}"
         sed -i -E 's;#?('"${1}"'=).*;\1'"${2}"';' "${CONFIGFILE}"
     fi
@@ -48,7 +48,7 @@ setVal suggestVersion "${MUMBLE_SUGGESTVERSION}"
 setVal suggestPositional "${MUMBLE_SUGGESTPOSITIONAL}"
 setVal suggestPushToTalk "${MUMBLE_SUGGESTPUSHTOTALK}"
 
-if [ ! -z "${MUMBLE_ENABLESSL}" ] && [ "${MUMBLE_ENABLESSL}" -eq 1 ]; then
+if [ -n "${MUMBLE_ENABLESSL}" ] && [ "${MUMBLE_ENABLESSL}" -eq 1 ]; then
     SSL_CERTFILE=${MUMBLE_CERTFILE:-/data/cert.pem}
     SSL_KEYFILE=${MUMBLE_KEYFILE:-/data/key.pem}
     SSL_CAFILE=${MUMBLE_CAFILE:-/data/intermediate.pem}
@@ -74,12 +74,12 @@ if [ ! -z "${MUMBLE_ENABLESSL}" ] && [ "${MUMBLE_ENABLESSL}" -eq 1 ]; then
     setVal sslCiphers "${MUMBLE_SSLCIPHERS}"
 fi
 
-if [ -f ${WELCOMEFILE} ]; then
+if [ -f "${WELCOMEFILE}" ]; then
     parsedContent=$(sed -E 's/"/\\"/g' "${WELCOMEFILE}")
     setVal welcometext "\"$parsedContent\""
 fi
 
-if ! grep '\[Ice\]' "${CONFIGFILE}" > /dev/null 2>&1; then
+if ! grep -q '\[Ice\]' "${CONFIGFILE}"; then
     echo "" >> "${CONFIGFILE}"
     cat "${ICEFILE}" >> "${CONFIGFILE}"
 fi
@@ -104,6 +104,6 @@ if [ ! -f /data/murmur.sqlite ]; then
 fi
 
 # Run murmur if not in debug mode
-if [ -z "$DEBUG" ] || [ ! "$DEBUG" -eq 1 ]; then
+if [ -z "$DEBUG" ] || [ "$DEBUG" -ne 1 ]; then
     exec /opt/murmur/murmur.x86 -fg -ini "${CONFIGFILE}"
 fi
