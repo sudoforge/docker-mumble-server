@@ -97,6 +97,8 @@ Here is a list of all options supported through environment variables:
 | [`MUMBLE_IMAGEMESSAGELENGTH`][mdoc-imagemessagelength] |`131072` |
 | [`MUMBLE_KDFITERATIONS`][mdoc-kdfIterations] | `-1`|
 | [`MUMBLE_LEGACYPASSWORDHASH`][mdoc-legacyPasswordHash] | `false` |
+| [`MUMBLE_MESSAGEBURST`][mgit-messagelimit] | `5` |
+| [`MUMBLE_MESSAGELIMIT`][mgit-messagelimit] | `1` |
 | [`MUMBLE_OBFUSCATE`][mdoc-obfuscate] | `false` |
 | [`MUMBLE_OPUSTHRESHOLD`][mdoc-opusthreshold] | `100` |
 | [`MUMBLE_REGISTERHOSTNAME`][mdoc-registerHostname] | `---` |
@@ -237,5 +239,6 @@ Numbered tags follow the pattern:
 [mdoc-suggestPushToTalk]: https://wiki.mumble.info/wiki/Murmur.ini#suggestPushToTalk
 [mdoc-sslcertkey]: https://wiki.mumble.info/wiki/Murmur.ini#sslCert_and_sslKey
 [mdoc-sslCiphers]: https://wiki.mumble.info/wiki/Murmur.ini#sslCiphers
+[mgit-messagelimit]: https://github.com/mumble-voip/mumble/pull/3517
 [issues/96]: https://github.com/sudoforge/docker-images/issues/96
 [tags]: https://hub.docker.com/r/sudoforge/mumble-server/tags "image tags"
