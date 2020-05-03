@@ -6,7 +6,7 @@ ICEFILE="/etc/murmur/ice.ini"
 WELCOMEFILE="/data/welcometext"
 
 setVal() {
-    if [ ${1} ] && [ "${2}" ]; then
+    if [ "${1}" ] && [ "${2}" ]; then
         echo "update setting: ${1} with: ${2}"
         sed -i -E 's;#?('"${1}"'=).*;\1'"${2}"';' "${CONFIGFILE}"
     fi
@@ -48,7 +48,7 @@ setVal suggestVersion "${MUMBLE_SUGGESTVERSION}"
 setVal suggestPositional "${MUMBLE_SUGGESTPOSITIONAL}"
 setVal suggestPushToTalk "${MUMBLE_SUGGESTPUSHTOTALK}"
 
-if [ ! -z ${MUMBLE_ENABLESSL} ] && [ ${MUMBLE_ENABLESSL} -eq 1 ]; then
+if [ ! -z "${MUMBLE_ENABLESSL}" ] && [ "${MUMBLE_ENABLESSL}" -eq 1 ]; then
     SSL_CERTFILE=${MUMBLE_CERTFILE:-/data/cert.pem}
     SSL_KEYFILE=${MUMBLE_KEYFILE:-/data/key.pem}
     SSL_CAFILE=${MUMBLE_CAFILE:-/data/intermediate.pem}
@@ -87,7 +87,7 @@ fi
 chown -R murmur:nobody /data/
 
 if [ ! -f /data/murmur.sqlite ]; then
-    if [ -z ${SUPERUSER_PASSWORD+x} ]; then
+    if [ -z "${SUPERUSER_PASSWORD+x}" ]; then
         SUPERUSER_PASSWORD=`pwgen -cns1 36`
     fi
 
@@ -100,7 +100,7 @@ if [ ! -f /data/murmur.sqlite ]; then
     # `true` if the first invocation fails.
     #
     # [1]: https://github.com/mumble-voip/mumble/commit/d8203ba94d528b092e0ff5a52a51af28f8f592f1
-    /opt/murmur/murmur.x86 -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD || true
+    /opt/murmur/murmur.x86 -ini "${CONFIGFILE}" -supw "$SUPERUSER_PASSWORD" || true
 fi
 
 # Run murmur if not in debug mode
