@@ -88,7 +88,7 @@ chown -R murmur:nobody /data/
 
 if [ ! -f /data/murmur.sqlite ]; then
     if [ -z "${SUPERUSER_PASSWORD+x}" ]; then
-        SUPERUSER_PASSWORD=`pwgen -cns1 36`
+        SUPERUSER_PASSWORD=$(pwgen -cns1 36)
     fi
 
     echo "SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
