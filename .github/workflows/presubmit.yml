@@ -1,0 +1,28 @@
+---
+name: "github/ci/presubmit"
+
+on:
+  push:
+    branches:
+      - "!master"
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: mumble-server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          docker build -t sudoforge/mumble-server:${GITHUB_SHA:0:9} mumble-server
+
+      - name: Test
+        run: |
+          docker run -d -P sudoforge/mumble-server:${GITHUB_SHA:0:9}
+          sleep 3 # give some time for the server to start up
+          [ ! "" = "$(docker ps -f 'ancestor=sudoforge/mumble-server' -f 'status=running' -f 'publish=64738' -q)" ] || (echo "Container is not running!" && exit 1)
