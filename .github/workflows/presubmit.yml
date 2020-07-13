@@ -1,0 +1,31 @@
+---
+name: "github/ci/presubmit"
+
+env:
+  LABEL: ${GITHUB_REF:0:9}
+
+on:
+  push:
+    branches:
+      - "!master"
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: mumble-server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          docker build -t sudoforge/mumble-server:${LABEL} mumble-server
+
+      - name: Test
+        run: |
+          docker run -d -P sudoforge/mumble-server:${LABEL}
+          docker ps -f "ancestor=sudoforge/mumble-server" -f "status=running" -f "publish=64738" -q | grep E '*'
+
