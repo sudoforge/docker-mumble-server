@@ -1,4 +1,4 @@
-# sudoforge/mumble-server [![badges-travis-ci]][travis-ci]
+# docker-mumble-server [![badges-travis-ci]][travis-ci]
 
 ![badge/mumble-version] ![badge/pulls/mumble-server] ![badge/stars/mumble-server]
 
@@ -7,17 +7,19 @@ the same server. It uses a client-server architecture, and encrypts all
 communication to ensure user privacy. **Murmur** is the name of the server
 component within the Mumble project.[Learn More][mumble-wiki].
 
-`sudoforge/mumble-server` enables you to easily run multiple (lightweight) murmur
-instances on the same host.
+This repository hosts the source code for the public image
+[`sudoforge/mumble-server`][docker-hub-repo-url], enabling you to easily run and
+maintain multiple instances of the server.
 
 ## Image name deprecation notice
 
 This image has been through a few renames to attempt to find the best fit for
-the community (see [`docker-images#96`][issues/96]). There are several images
-that are currently available, however, these are in the process of being
-deprecated and consolidated into `sudoforge/mumble-server`. During this
-deprecation period, all of the images will be kept in sync, and have the same
-tags available.
+the community (see [`sudoforge/docker-mumble-server#96`][issues/96]). There are
+several images that are currently available, however, these are in the process
+of being deprecated and consolidated into
+[`sudoforge/mumble-server`][docker-hub-repo-url]. During this deprecation
+period, all of the images will be kept in sync, and have the same tags
+available.
 
 | Image name                | Type         | Badges                                                    | Targeted Removal Date |
 | ------------------------- | ------------ | --------------------------------------------------------- | --------------------- |
