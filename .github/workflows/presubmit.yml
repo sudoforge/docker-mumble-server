@@ -1,24 +1,23 @@
 ---
-name: "github/ci/presubmit"
+name: "ci"
 
-on:
-  push:
-    branches:
-      - "!master"
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
-  presubmit:
-    name: mumble-server
+  test:
+    name: test
+    if: >
+      github.event_name == 'push' || (
+        github.event_name == 'pull_request' &&
+        github.event.pull_request.head.repo.full_name != github.repository
+      )
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build
+      - name: build
         run: ./tools/ci/build.sh
 
-      - name: Test
+      - name: test
         run: ./tools/ci/test.sh
