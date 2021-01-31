@@ -11,22 +11,6 @@ This repository hosts the source code for the public image
 [`sudoforge/mumble-server`][docker-hub-repo-url], enabling you to easily run and
 maintain multiple instances of the server.
 
-## Image name deprecation notice
-
-This image has been through a few renames to attempt to find the best fit for
-the community (see [`sudoforge/docker-mumble-server#96`][issues/96]). There are
-several images that are currently available, however, these are in the process
-of being deprecated and consolidated into
-[`sudoforge/mumble-server`][docker-hub-repo-url]. During this deprecation
-period, all of the images will be kept in sync, and have the same tags
-available.
-
-| Image name                | Type         | Badges                                                    | Targeted Removal Date |
-| ------------------------- | ------------ | --------------------------------------------------------- | --------------------- |
-| `sudoforge/mumble-server` | **Primary**  | ![badge/pulls/mumble-server] ![badge/stars/mumble-server] | `---`                 |
-| `sudoforge/murmur`        | _Deprecated_ | ![badge/pulls/murmur] ![badge/stars/murmur]               | **`January 31 2021`** |
-| `sudoforge/murmurd`       | _Deprecated_ | ![badge/pulls/murmurd] ![badge/stars/murmurd]             | **`January 31 2021`** |
-
 ## Getting started
 
 This guide assumes that you already have [Docker][docker-install-docs]
@@ -198,10 +182,6 @@ Numbered tags follow the pattern:
 [badge/mumble-version]: https://img.shields.io/badge/mumble-1.3.1-green.svg?maxAge=2592000 "mumble v1.3.1"
 [badge/pulls/mumble-server]: https://img.shields.io/docker/pulls/sudoforge/mumble-server.svg "Docker Pulls"
 [badge/stars/mumble-server]: https://img.shields.io/docker/stars/sudoforge/mumble-server.svg "Docker Stars"
-[badge/pulls/murmur]: https://img.shields.io/docker/pulls/sudoforge/murmur.svg "Docker Pulls"
-[badge/stars/murmur]: https://img.shields.io/docker/stars/sudoforge/murmur.svg "Docker Stars"
-[badge/pulls/murmurd]: https://img.shields.io/docker/pulls/sudoforge/murmurd.svg "Docker Pulls"
-[badge/stars/murmurd]: https://img.shields.io/docker/stars/sudoforge/murmurd.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
 [travis-ci]: https://travis-ci.org/sudoforge/docker-images
 [badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
