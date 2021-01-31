@@ -103,7 +103,8 @@ if [ ! -f /data/murmur.sqlite ]; then
     # Before removing this workaround, be sure to check that the upstream
     # release actually contains the commit:
     #
-    #     git tag --contains b7a0867ca935e0bda1057f6760df0551ccb33409 <ref>
+    #     git clone git@github.com:mumble-voip/mumble.git
+    #     git -C mumble tag --contains d8203ba94d528b092e0ff5a52a51af28f8f592f1 <ref>
     #
     # This was previously erroneously removed. See [2] for more information.
     #
