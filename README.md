@@ -179,7 +179,7 @@ Numbered tags follow the pattern:
 
 ![badges-analytics]
 
-[badge/mumble-version]: https://img.shields.io/badge/mumble-1.3.1-green.svg?maxAge=2592000 "mumble v1.3.1"
+[badge/mumble-version]: https://img.shields.io/badge/mumble-1.3.3-green.svg?maxAge=2592000 "mumble v1.3.3"
 [badge/pulls/mumble-server]: https://img.shields.io/docker/pulls/sudoforge/mumble-server.svg "Docker Pulls"
 [badge/stars/mumble-server]: https://img.shields.io/docker/stars/sudoforge/mumble-server.svg "Docker Stars"
 [badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
