@@ -175,6 +175,8 @@ Numbered tags follow the pattern:
   └──── the version of mumble for this release
 ```
 
+Releases start at (and are reset to) `1` for every new `MUMBLE_VERSION`.
+
 ---
 
 ![badges-analytics]
