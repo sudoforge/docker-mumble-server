@@ -93,24 +93,7 @@ if [ ! -f /data/murmur.sqlite ]; then
 
     echo "SUPERUSER_PASSWORD: $SUPERUSER_PASSWORD"
 
-    # Using -supw currently throws a fatal error and exits the program. It has
-    # been fixed in the upstream project by commit d8203ba94 [1], but has not
-    # yet been included in a release. To bypass the issue and allow the entrypoint
-    # script to proceed, we are ignoring the erroneous exit code by executing
-    # `true` if the invocation fails.
-    #
-    # IMPORTANT
-    # Before removing this workaround, be sure to check that the upstream
-    # release actually contains the commit:
-    #
-    #     git clone git@github.com:mumble-voip/mumble.git
-    #     git -C mumble tag --contains d8203ba94d528b092e0ff5a52a51af28f8f592f1 <ref>
-    #
-    # This was previously erroneously removed. See [2] for more information.
-    #
-    # [1]: https://github.com/mumble-voip/mumble/commit/d8203ba94d528b092e0ff5a52a51af28f8f592f1
-    # [2]: https://github.com/sudoforge/docker-mumble-server/issues/121
-    /opt/murmur/murmur.x86 -ini "$CONFIGFILE" -supw "$SUPERUSER_PASSWORD" || true
+    /opt/murmur/murmur.x86 -ini "$CONFIGFILE" -supw "$SUPERUSER_PASSWORD"
 fi
 
 # Run murmur if not in debug mode
