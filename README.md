@@ -4,8 +4,7 @@
 
 **Mumble** is a VOIP application which allows users to talk to each other via
 the same server. It uses a client-server architecture, and encrypts all
-communication to ensure user privacy. **Murmur** is the name of the server
-component within the Mumble project.[Learn More][mumble-wiki].
+communication to ensure user privacy. [Learn More][mumble-wiki].
 
 This repository hosts the source code for the public image
 [`sudoforge/mumble-server`][docker-hub-repo-url], enabling you to easily run and
