@@ -25,8 +25,8 @@ docker pull sudoforge/mumble-server[:tag]
 ```
 
 You don't _need_ to specify a tag, but it's a good idea to so that you don't
-pull `latest` and risk getting different versions on different hosts. Versions
-are kept in line with the [releases from mumble-voip/mumble][vendor-releases].
+pull `latest` and risk getting different versions on different hosts. [See the
+tagging policy](#tagging-policy) for more information.
 
 The examples throughout this document assume we are not using a tag for the sake
 of brevity. If you pull the image with a tag other than `latest`, you will need
@@ -152,10 +152,10 @@ $ docker logs mumble-server-001 2>&1 | grep SUPERUSER_PASSWORD
 > SUPERUSER_PASSWORD: <value>
 ```
 
-## Tagging policy
+## <a name="tagging-policy"></a>Tagging policy
 
-This project does not overwrite tags; they can (and should) be treated as
-immutable references, although you should still use image digests when deploying
+This project does not overwrite tags; they can be treated as immutable
+references, although it is still recommended to use image digests when deploying
 or extending this image.
 
 The `latest` tag follows the `master` branch of this repository and has
@@ -174,7 +174,9 @@ Numbered tags follow the pattern:
   └──── the version of mumble for this release
 ```
 
-Releases start at (and are reset to) `1` for every new `MUMBLE_VERSION`.
+`MUMBLE_VERSION` values are kept in line with the [releases from
+mumble-voip/mumble][vendor-releases]. `RELEASE` values start at (and are reset
+to) `1` for each new `MUMBLE_VERSION`.
 
 ---
 
