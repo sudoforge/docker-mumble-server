@@ -183,8 +183,8 @@ Releases start at (and are reset to) `1` for every new `MUMBLE_VERSION`.
 [badge/stars/mumble-server]: https://img.shields.io/docker/stars/sudoforge/mumble-server.svg "Docker Stars"
 [ci-workflow-url]: https://github.com/sudoforge/docker-mumble-server/actions?query=workflow%3Aci+branch%3Atrunk "Build Status"
 [ci-workflow-badge]: https://github.com/sudoforge/docker-mumble-server/workflows/ci/badge.svg "Build Status Badge"
-[repo-url]: https://www.github.com/sudoforge/docker-images
-[releases]: https://www.github.com/sudoforge/docker-images/releases
+[repo-url]: https://www.github.com/sudoforge/docker-mumble-server
+[releases]: https://www.github.com/sudoforge/docker-mumble-server/releases
 [vendor-releases]: https://www.github.com/mumble-voip/mumble/releases
 [mumble-wiki]: http://wiki.mumble.info/wiki/Main_Page "Learn About Mumble"
 [docker-install-docs]: https://docs.docker.com/engine/installation/ "Docker Installation Docs"
@@ -220,5 +220,5 @@ Releases start at (and are reset to) `1` for every new `MUMBLE_VERSION`.
 [mdoc-sslcertkey]: https://wiki.mumble.info/wiki/Murmur.ini#sslCert_and_sslKey
 [mdoc-sslCiphers]: https://wiki.mumble.info/wiki/Murmur.ini#sslCiphers
 [mdoc-ratelimit]: https://wiki.mumble.info/wiki/Murmur.ini#messagelimit_and_messageburst
-[issues/96]: https://github.com/sudoforge/docker-images/issues/96
+[issues/96]: https://github.com/sudoforge/docker-mumble-server/issues/96
 [tags]: https://hub.docker.com/r/sudoforge/mumble-server/tags "image tags"
