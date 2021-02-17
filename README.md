@@ -1,4 +1,4 @@
-# docker-mumble-server [![badges-travis-ci]][travis-ci]
+# docker-mumble-server [![Build Status][ci-workflow-badge]][ci-workflow-url]
 
 ![badge/mumble-version] ![badge/pulls/mumble-server] ![badge/stars/mumble-server]
 
@@ -183,9 +183,9 @@ Releases start at (and are reset to) `1` for every new `MUMBLE_VERSION`.
 [badge/mumble-version]: https://img.shields.io/badge/mumble-1.3.4-green.svg?maxAge=2592000 "mumble v1.3.4"
 [badge/pulls/mumble-server]: https://img.shields.io/docker/pulls/sudoforge/mumble-server.svg "Docker Pulls"
 [badge/stars/mumble-server]: https://img.shields.io/docker/stars/sudoforge/mumble-server.svg "Docker Stars"
-[badges-travis-ci]: https://travis-ci.org/sudoforge/docker-images.svg?branch=master "Build Status"
-[travis-ci]: https://travis-ci.org/sudoforge/docker-images
 [badges-analytics]: https://ga-beacon.appspot.com/UA-98603156-1/github-landing-page?flat "Analytics"
+[ci-workflow-url]: https://github.com/sudoforge/docker-mumble-server/actions?query=workflow%3Aci+branch%3Atrunk "Build Status"
+[ci-workflow-badge]: https://github.com/sudoforge/docker-mumble-server/workflows/ci/badge.svg "Build Status Badge"
 [repo-url]: https://www.github.com/sudoforge/docker-images
 [releases]: https://www.github.com/sudoforge/docker-images/releases
 [vendor-releases]: https://www.github.com/mumble-voip/mumble/releases
